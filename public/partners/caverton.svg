@@ -1,0 +1,12 @@
+<svg width="200" height="60" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="grad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" style="stop-color:#006837;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#0071BC;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <path d="M10 30 Q30 15 60 30 T110 30" fill="none" stroke="url(#grad)" stroke-width="4" stroke-linecap="round"/>
+  <path d="M15 35 Q35 20 65 35 T115 35" fill="none" stroke="url(#grad)" stroke-width="2" stroke-opacity="0.5" stroke-linecap="round"/>
+  <text x="70" y="42" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="white">CAVERTON</text>
+  <circle cx="35" cy="25" r="3" fill="#FDB813" />
+</svg>
