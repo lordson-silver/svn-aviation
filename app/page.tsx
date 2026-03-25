@@ -21,7 +21,7 @@ export default async function Home() {
     <div className="relative min-h-screen w-full bg-white text-white flex flex-col font-sans overflow-x-hidden">
       {/* Primary SEO Heading (Visually Hidden if redundant with Hero, but good for SEO crawlers) */}
       <h1 className="sr-only">
-        {settings?.title || "SVN Aviation | Premium Aviation Charter & Air Logistics Nigeria"}
+        {settings?.title || "SVN Aviation | Private Jet & Helicopter Charter Services in Nigeria"}
       </h1>
 
       <main>

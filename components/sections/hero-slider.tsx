@@ -9,8 +9,8 @@ import { cn } from "@/lib/utils";
 const DEFAULT_SLIDES = [
   {
     imageUrl: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=2000&auto=format&fit=crop",
-    title: "Premium Aviation Charter",
-    subtitle: "On-demand executive flights and helicopter services across Nigeria's strategic corridors.",
+    title: "Private Jet Charter in Nigeria",
+    subtitle: "On-demand executive flights and Private Jet Charter across Nigeria's strategic corridors.",
     tagline: "WE CONNECT AND DELIVER",
     ctaText: "Request Charter",
     ctaLink: "/contact"

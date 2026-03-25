@@ -36,16 +36,16 @@ export const SERVICES = [
 ];
 export const homeServices = [
   {
-    slug: "helicopter-charter",
-    title: "Helicopter Charter Services",
+    slug: "helicopter-charter-nigeria",
+    title: "Helicopter Charter Nigeria",
     icon: "helicopter",
     desc: "Professional helicopter charter solutions for offshore crew change, remote site access, executive transfer, and emergency response.",
     tagline: "Rapid deployment. Controlled mobility. Operational continuity.",
     content: "Our helicopter charter services provide unparallelled access to remote locations and offshore platforms. With a fleet of modern, well-maintained aircraft and highly experienced pilots, we ensure safe and efficient transport for personnel and critical cargo. Whether it's a routine crew change or an emergency medical evacuation, SVN Aviation is your reliable partner in the skies.",
   },
   {
-    slug: "private-jet-charter",
-    title: "Private Jet Charter",
+    slug: "private-jet-charter-nigeria",
+    title: "Private Jet Charter Nigeria",
     icon: "plane",
     desc: "Executive and corporate jet charter services for CEOs, government officials, and high-net-worth individuals requiring discreet travel.",
     tagline: "Confidential. Efficient. Direct.",
@@ -53,7 +53,7 @@ export const homeServices = [
   },
   {
     slug: "offshore-crew-transfer",
-    title: "Offshore Crew Transfer",
+    title: "Oil & Gas Charter Flights",
     icon: "ship",
     desc: "Dedicated helicopter logistics supporting oil & gas platforms, FPSO operations, and energy sector crew rotation.",
     tagline: "Structured deployment aligned with operational timelines.",
@@ -69,7 +69,7 @@ export const homeServices = [
   },
   {
     slug: "emergency-operations",
-    title: "Emergency Operations",
+    title: "Emergency Charter Flights",
     icon: "life-buoy",
     desc: "Coordinated helicopter and jet deployment for emergency medical evacuation and urgent personnel transfer.",
     tagline: "Rapid response aviation when every minute matters.",
