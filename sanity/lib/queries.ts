@@ -30,3 +30,35 @@ export const latestPostsQuery = groq`*[_type == "post"] | order(publishedAt desc
   author->{name, image},
   categories[]->{title}
 }`
+
+export const siteSettingsQuery = groq`*[_type == "siteSettings"][0] {
+  title,
+  description,
+  keywords,
+  "ogImage": ogImage.asset->url,
+  address,
+  email,
+  phone,
+  socialLinks
+}`
+
+export const homePageQuery = groq`*[_type == "homePage"][0] {
+  heroSlides[] {
+    title,
+    subtitle,
+    tagline,
+    "imageUrl": image.asset->url,
+    ctaText,
+    ctaLink
+  },
+  operationalTitle,
+  operationalDescription,
+  capabilities[] {
+    title,
+    description,
+    stat
+  },
+  industryTitle,
+  industryDescription,
+  logoCloudTitle
+}`

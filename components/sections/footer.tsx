@@ -131,6 +131,7 @@ export function Footer() {
                   type="email" 
                   placeholder="Enter Email" 
                   className="w-full bg-white text-black px-6 py-4 rounded-xl text-sm font-medium focus:outline-none focus:ring-2 focus:ring-brand-yellow transition-all"
+                  suppressHydrationWarning
                 />
                 <button className="absolute right-2 top-2 bottom-2 bg-brand-yellow hover:bg-black text-black hover:text-brand-yellow px-4 rounded-lg transition-all flex items-center justify-center group/btn shadow-xl">
                     <Send className="w-4 h-4 transition-transform group-hover/btn:scale-110" />

@@ -6,42 +6,58 @@ import { motion, AnimatePresence } from "framer-motion";
 import { Navbar } from "@/components/ui/navbar";
 import { cn } from "@/lib/utils";
 
-const HERO_SLIDES = [
+const DEFAULT_SLIDES = [
   {
-    image: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=2000&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=2000&auto=format&fit=crop",
     title: "Premium Aviation Charter",
     subtitle: "On-demand executive flights and helicopter services across Nigeria's strategic corridors.",
-    tag: "WE CONNECT AND DELIVER"
+    tagline: "WE CONNECT AND DELIVER",
+    ctaText: "Request Charter",
+    ctaLink: "/contact"
   },
   {
-    image: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=2000&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=2000&auto=format&fit=crop",
     title: "Critical Air Logistics",
     subtitle: "Delivering consistently for Oil & Gas industries with offshore crew transfers and specialized cargo.",
-    tag: "A BRANCH OF SCHNELL VOGEL"
+    tagline: "A BRANCH OF SCHNELL VOGEL",
+    ctaText: "View Logistics",
+    ctaLink: "/#services"
   },
   {
-    image: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=2000&auto=format&fit=crop",
+    imageUrl: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=2000&auto=format&fit=crop",
     title: "Global Reach, Local Expertise",
     subtitle: "Strategic aviation coordination supported by Schnell Vogel's nationwide logistics network.",
-    tag: "NATIONWIDE DEPLOYMENT"
+    tagline: "NATIONWIDE DEPLOYMENT",
+    ctaText: "Contact Us",
+    ctaLink: "/contact"
   }
 ];
 
 import Link from "next/link";
 
-export function HeroSlider() {
+interface HeroSlide {
+  title: string;
+  subtitle: string;
+  tagline: string;
+  imageUrl: string;
+  ctaText?: string;
+  ctaLink?: string;
+}
+
+export function HeroSlider({ slides }: { slides?: HeroSlide[] }) {
   const [currentSlide, setCurrentSlide] = useState(0);
+  const activeSlides = slides && slides.length > 0 ? slides : DEFAULT_SLIDES;
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setCurrentSlide((prev) => (prev + 1) % HERO_SLIDES.length);
+      setCurrentSlide((prev) => (prev + 1) % activeSlides.length);
     }, 6000);
     return () => clearInterval(timer);
-  }, []);
+  }, [activeSlides.length]);
 
   return (
-    <div className="p-4 md:p-6 w-full h-[100vh] min-h-[750px] flex flex-col">
-      <section className="relative flex-1 w-full overflow-hidden rounded-[2rem] md:rounded-[3rem] bg-brand-dark/20 border border-white/5 shadow-2xl">
+    <div className=" md:p-6 w-full h-[100vh] flex flex-col">
+      <section className="relative flex-1 w-full overflow-hidden rounded-3xl md:rounded-[3rem] bg-brand-dark/20 border border-white/5 shadow-2xl">
         <Navbar />
         
         <AnimatePresence mode="wait">
@@ -54,8 +70,8 @@ export function HeroSlider() {
             className="absolute inset-0"
           >
             <Image
-              src={HERO_SLIDES[currentSlide].image}
-              alt={HERO_SLIDES[currentSlide].title}
+              src={activeSlides[currentSlide].imageUrl}
+              alt={activeSlides[currentSlide].title}
               fill
               priority
               className="object-cover scale-105"
@@ -67,7 +83,7 @@ export function HeroSlider() {
           </motion.div>
         </AnimatePresence>
 
-        <main className="relative z-20 h-full flex flex-col justify-end px-8 md:px-12 lg:px-20 max-w-[1400px] w-full mx-auto pb-32">
+        <div className="relative z-20 h-full flex flex-col justify-center md:justify-end px-6 md:px-12 lg:px-20 max-w-[1400px] w-full mx-auto pb-36 md:pb-32">
           <AnimatePresence mode="wait">
             <motion.div
               key={currentSlide}
@@ -80,8 +96,8 @@ export function HeroSlider() {
                 transition={{ delay: 0.2 }}
                 className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md border border-white/20 px-4 py-1.5 rounded-full mb-6"
               >
-                <span className="text-white text-[10px] font-black tracking-[0.2em] uppercase">
-                  {HERO_SLIDES[currentSlide].tag}
+                <span className="text-white text-[8px] md:text-[10px] font-black tracking-[0.15em] md:tracking-[0.2em] uppercase">
+                  {activeSlides[currentSlide].tagline}
                 </span>
               </motion.div>
 
@@ -92,22 +108,22 @@ export function HeroSlider() {
                     initial={{ opacity: 0, y: 30 }}
                     animate={{ opacity: 1, y: 0 }}
                     transition={{ delay: 0.3, duration: 0.8 }}
-                    className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] font-serif uppercase tracking-tighter mb-4"
+                    className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black leading-[1.05] md:leading-[0.95] font-serif uppercase tracking-tighter mb-4"
                   >
-                    {HERO_SLIDES[currentSlide].title}
+                    {activeSlides[currentSlide].title}
                   </motion.h1>
                   
                   <motion.div 
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ delay: 0.5 }}
-                    className="flex gap-4 mt-8"
+                    className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-6 md:mt-8 w-full sm:w-auto"
                   >
-                    <Link href="/contact" className="bg-brand-yellow hover:bg-white text-black px-10 py-5 font-black transition-all text-sm tracking-widest uppercase rounded-sm shadow-2xl flex items-center justify-center">
-                      Request Charter
+                    <Link href={activeSlides[currentSlide].ctaLink || "/contact"} className="bg-brand-yellow hover:bg-white text-black px-6 py-4 md:px-10 md:py-5 font-black transition-all text-xs md:text-sm tracking-widest uppercase rounded-sm shadow-2xl flex items-center justify-center text-center">
+                      {activeSlides[currentSlide].ctaText || "Request Charter"}
                     </Link>
-                    <Link href="/#services" className="border border-white/20 hover:bg-white hover:text-black text-white px-10 py-5 font-black transition-all text-sm tracking-widest uppercase rounded-sm backdrop-blur-sm flex items-center justify-center">
-                      View Fleet
+                    <Link href="/#services" className="border border-white/20 hover:bg-white hover:text-black text-white px-6 py-4 md:px-10 md:py-5 font-black transition-all text-xs md:text-sm tracking-widest uppercase rounded-sm backdrop-blur-sm flex items-center justify-center text-center">
+                      View Services
                     </Link>
                   </motion.div>
                 </div>
@@ -120,7 +136,7 @@ export function HeroSlider() {
                   className="max-w-md text-right hidden lg:block"
                 >
                   <p className="text-lg text-white/80 leading-relaxed font-medium">
-                    {HERO_SLIDES[currentSlide].subtitle}
+                    {activeSlides[currentSlide].subtitle}
                   </p>
                 </motion.div>
               </div>
@@ -128,8 +144,8 @@ export function HeroSlider() {
           </AnimatePresence>
 
           {/* Slide Indicators/Pagination */}
-          <div className="absolute inset-x-8 bottom-8 md:inset-x-auto md:bottom-auto md:right-20 md:top-1/2 md:-translate-y-1/2 flex flex-row md:flex-col justify-center gap-4">
-            {HERO_SLIDES.map((_, i) => (
+          <div className="relative mt-20 md:absolute md:right-20 md:top-1/2 md:-translate-y-1/2 flex flex-row md:flex-col justify-center gap-2 md:gap-4 z-30">
+            {activeSlides.map((_, i) => (
               <button
                 key={i}
                 onClick={() => setCurrentSlide(i)}
@@ -148,7 +164,7 @@ export function HeroSlider() {
               </button>
             ))}
           </div>
-        </main>
+        </div>
       </section>
     </div>
   );

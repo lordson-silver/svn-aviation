@@ -25,7 +25,7 @@ export function LogoCloud({ className, ...props }: LogoCloudProps) {
     >
       {/* <div className="w-full"> */}
       <div className="w-full [mask-image:linear-gradient(to_right,transparent,black_15%,black_85%,transparent)]">
-        <InfiniteSlider gap={100} reverse duration={60} durationOnHover={30}>
+        <InfiniteSlider gap={100} duration={60} durationOnHover={30}>
           {logos.map((logo, idx) => (
             <div key={idx} className="flex items-center">
               <span className="text-xl md:text-2xl font-black tracking-widest text-white/50 uppercase whitespace-nowrap hover:text-white transition-colors duration-300">

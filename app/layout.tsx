@@ -16,19 +16,112 @@ const hankenGrotesk = Hanken_Grotesk({
 });
 
 import { BackToTop } from "@/components/ui/back-to-top";
+import { client } from "@/sanity/lib/client";
+import { siteSettingsQuery } from "@/sanity/lib/queries";
 
-export const metadata: Metadata = {
-  title: "SVN Aviation | A Branch of Schnell Vogel Nigeria Limited",
-  description: "Premium Aviation Charter & Air Logistics. Delivering consistently for Oil and Gas Industries.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  let settings = null;
+  try {
+    settings = await client.fetch(siteSettingsQuery);
+  } catch (error) {
+    console.error("Failed to fetch site settings in generateMetadata:", error);
+  }
+  
+  const siteTitle = settings?.title || "SVN Aviation | A Branch of Schnell Vogel Nigeria Limited";
+  const siteDescription = settings?.description || "Premium Aviation Charter & Air Logistics. Delivering consistently for Oil and Gas Industries.";
+  const keywords = settings?.keywords || ["Aviation", "Nigeria", "Charter", "Helicopter", "Logistics", "Oil and Gas"];
+  const ogImage = settings?.ogImage || "/og-image.jpg";
 
-export default function RootLayout({
+  return {
+    title: {
+      default: siteTitle,
+      template: `%s | ${siteTitle}`,
+    },
+    description: siteDescription,
+    keywords: keywords,
+    authors: [{ name: "SVN Aviation" }],
+    creator: "SVN Aviation",
+    publisher: "Schnell Vogel Nigeria Limited",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    },
+    openGraph: {
+      title: siteTitle,
+      description: siteDescription,
+      url: "https://svnaviation.com",
+      siteName: siteTitle,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteTitle,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: siteTitle,
+      description: siteDescription,
+      images: [ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+  };
+}
+
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  let settings = null;
+  try {
+    settings = await client.fetch(siteSettingsQuery);
+  } catch (error) {
+    console.error("Failed to fetch site settings in RootLayout:", error);
+  }
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": settings?.title || "SVN Aviation",
+    "url": "https://svnaviation.com",
+    "logo": "https://svnaviation.com/logo.svg",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": settings?.phone || "+234-XXX-XXXX",
+      "contactType": "customer service",
+      "areaServed": "NG",
+      "availableLanguage": "en"
+    },
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": settings?.address || "Lagos, Nigeria",
+      "addressLocality": "Lagos",
+      "addressCountry": "NG"
+    }
+  };
+
   return (
     <html lang="en" className={cn("font-sans", geist.variable)}>
+      <head>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+        />
+      </head>
       <body
         className={`${inter.variable} ${hankenGrotesk.variable} antialiased relative`}
       >

@@ -15,16 +15,16 @@ export function FinalCTA() {
           <div className="relative z-10 grid lg:grid-cols-2 gap-20 items-center">
             <div>
               <h2 className="text-4xl md:text-6xl font-serif mb-8 max-w-lg leading-tight uppercase font-black italic">
-                Ready for <br /> Deployment?
+                Ready for <br /> Aviation Deployment?
               </h2>
               <p className="text-xl text-white/50 font-light leading-relaxed mb-12 max-w-md">
-                SVN Aviation operations team is available 24/7. Backed by the logistics power of Schnell Vogel Nigeria Limited.
+                SVN Aviation operations team is available 24/7 for charter and logistics management. Backed by the logistics power of Schnell Vogel Nigeria Limited.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6">
                 <Link href="/contact" className="w-full sm:w-auto">
                   <button className="w-full bg-brand-yellow hover:bg-white text-black px-10 py-5 font-black transition-all flex items-center justify-center gap-3 group/btn shadow-[0_10px_30px_rgba(253,184,19,0.2)] uppercase text-[10px] tracking-widest">
-                    Request Quote <ArrowUpRight className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
+                    Get Custom Quote <ArrowUpRight className="w-5 h-5 group-hover/btn:translate-x-1 group-hover/btn:-translate-y-1 transition-transform" />
                   </button>
                 </Link>
                 <a 

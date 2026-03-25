@@ -1,36 +1,54 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# SVN Aviation | Premium Aviation Charter & Air Logistics
 
-## Getting Started
+![SVN Aviation Banner](/public/og-image.jpg)
 
-First, run the development server:
+SVN Aviation is a sleek, high-end web application developed for **SVN Aviation**, a branch of **Schnell Vogel Nigeria Limited**. It provides specialized aviation logistics and charter services for high-net-worth individuals and energy sector operations in Nigeria.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ✨ Features
+- **Modern Next.js Architecture**: High-performance, SEO-friendly framework.
+- **headless CMS Integration**: Content-driven management via Sanity.io.
+- **Premium Aesthetics**: Vibrant dark-mode design with high-end animations (Framer Motion).
+- **Accessible Design**: Complies with WAI-ARIA standards using Radix UI primitives.
+- **Optimized Performance**: Best-in-class image loading and font optimization.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## 🚀 Quick Start
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+1. **Clone the repository:**
+   ```bash
+   git clone [repository-url]
+   cd svn-aviation
+   ```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+2. **Install dependencies:**
+   ```bash
+   npm install
+   ```
 
-## Learn More
+3. **Set up Environment Variables:**
+   Create a `.env.local` file:
+   ```env
+   NEXT_PUBLIC_SANITY_PROJECT_ID=your_id
+   NEXT_PUBLIC_SANITY_DATASET=production
+   ```
 
-To learn more about Next.js, take a look at the following resources:
+4. **Run development server:**
+   ```bash
+   npm run dev
+   ```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+5. **Open Studio:**
+   Access the CMS at `http://localhost:3000/studio`.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## 📖 Documentation
+Detailed technical documentation can be found in [PROJECT_DOCUMENTATION.md](./PROJECT_DOCUMENTATION.md).
 
-## Deploy on Vercel
+## 🛠️ Stack
+- **Frontend**: Next.js 15+, React 19+
+- **Styling**: Tailwind CSS v4, Framer Motion
+- **Icons**: Lucide React
+- **CMS**: Sanity
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+---
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Produced by the SVN Aviation Development team.
+For inquiries, contact [SVN Aviation](https://svnaviation.com).

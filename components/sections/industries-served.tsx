@@ -3,7 +3,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 
-const industries = [
+const DEFAULT_INDUSTRIES = [
   "Oil & Gas",
   "Energy & Infrastructure",
   "Corporate Executives",
@@ -12,20 +12,26 @@ const industries = [
   "Maritime & Logistics Operations"
 ];
 
-export function IndustriesServed() {
+export function IndustriesServed({ 
+  title, 
+  description 
+}: { 
+  title?: string; 
+  description?: string;
+}) {
   return (
     <section className="py-32 bg-black border-t border-white/5">
       <div className="max-w-[1400px] mx-auto px-8 md:px-12 flex flex-col lg:flex-row gap-20">
         <div className="lg:w-1/2">
           <h4 className="text-brand-yellow text-sm font-bold tracking-[0.3em] uppercase mb-4">Sectors</h4>
-          <h2 className="text-4xl md:text-6xl font-serif mb-8">Industries We Serve</h2>
+          <h2 className="text-4xl md:text-6xl font-serif mb-8">{title || "Industries We Serve"}</h2>
           <p className="text-xl text-white/60 font-light leading-relaxed max-w-xl">
-            SVN Aviation, supported by the broader capabilities of Schnell Vogel Nigeria Limited, serves a diverse range of industries requiring controlled aviation logistics and executive mobility.
+            {description || "SVN Aviation, supported by the broader capabilities of Schnell Vogel Nigeria Limited, serves a diverse range of industries requiring controlled aviation logistics and executive mobility."}
           </p>
         </div>
         
         <div className="lg:w-1/2 grid grid-cols-1 md:grid-cols-2 gap-4">
-          {industries.map((industry, i) => (
+          {DEFAULT_INDUSTRIES.map((industry, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: 20 }}

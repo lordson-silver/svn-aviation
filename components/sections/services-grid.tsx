@@ -27,13 +27,12 @@ export function ServicesGrid() {
               className="group bg-black p-12 hover:bg-brand-yellow/5 transition-all flex flex-col h-full"
             >
               <div className="text-brand-yellow mb-8 group-hover:scale-110 transition-transform origin-left">
-                {/* Fallback icons since we moved the array */}
-                {i === 0 && <Helicopter className="w-8 h-8" />}
-                {i === 1 && <Plane className="w-8 h-8" />}
-                {i === 2 && <Ship className="w-8 h-8" />}
-                {i === 3 && <Package className="w-8 h-8" />}
-                {i === 4 && <LifeBuoy className="w-8 h-8" />}
-                {i === 5 && <Camera className="w-8 h-8" />}
+                {service.icon === 'helicopter' && <Helicopter className="w-8 h-8" />}
+                {service.icon === 'plane' && <Plane className="w-8 h-8" />}
+                {service.icon === 'ship' && <Ship className="w-8 h-8" />}
+                {service.icon === 'package' && <Package className="w-8 h-8" />}
+                {service.icon === 'life-buoy' && <LifeBuoy className="w-8 h-8" />}
+                {service.icon === 'camera' && <Camera className="w-8 h-8" />}
               </div>
               <h3 className="text-2xl font-serif mb-4">{service.title}</h3>
               <p className="text-white/60 mb-8 leading-relaxed font-light">
@@ -47,7 +46,7 @@ export function ServicesGrid() {
                    href={`/services/${service.slug}`}
                    className="flex items-center gap-2 text-[10px] font-black uppercase tracking-widest border-b border-brand-yellow/30 pb-1 hover:border-brand-yellow transition-all w-fit"
                  >
-                   Learn More <ChevronRight className="w-3.5 h-3.5 text-brand-yellow" />
+                   {i % 2 === 0 ? "Explore Expertise" : "Full Particulars"} <ChevronRight className="w-3.5 h-3.5 text-brand-yellow" />
                  </Link>
               </div>
             </motion.div>

@@ -8,32 +8,53 @@ import { FinalCTA } from "@/components/sections/final-cta";
 import { Footer } from "@/components/sections/footer";
 import { HeroSlider } from "@/components/sections/hero-slider";
 import { client } from "@/sanity/lib/client";
-import { latestPostsQuery } from "@/sanity/lib/queries";
+import { latestPostsQuery, homePageQuery, siteSettingsQuery } from "@/sanity/lib/queries";
 
 export default async function Home() {
-  const posts = await client.fetch(latestPostsQuery);
+  const [posts, homeData, settings] = await Promise.all([
+    client.fetch(latestPostsQuery),
+    client.fetch(homePageQuery),
+    client.fetch(siteSettingsQuery),
+  ]);
 
   return (
     <div className="relative min-h-screen w-full bg-white text-white flex flex-col font-sans overflow-x-hidden">
-      {/* Hero Slider (Client Component) */}
-      <HeroSlider />
+      {/* Primary SEO Heading (Visually Hidden if redundant with Hero, but good for SEO crawlers) */}
+      <h1 className="sr-only">
+        {settings?.title || "SVN Aviation | Premium Aviation Charter & Air Logistics Nigeria"}
+      </h1>
 
-      {/* Logo Cloud Section - Integrated with parent brand */}
-      <div className="relative z-20 bg-black py-16 border-y border-white/5">
-         <div className="max-w-[1400px] mx-auto px-8 md:px-12">
-            <div className="text-center mb-8">
-              <span className="text-brand-yellow text-[10px] font-black tracking-[0.3em] uppercase">Strategic Partner Network</span>
-            </div>
-            <LogoCloud />
-         </div>
-      </div>
+      <main>
+        {/* Hero Slider (Client Component) */}
+        <HeroSlider slides={homeData?.heroSlides} />
 
-      {/* Content Sections */}
-      <ServicesGrid />
-      <OperationalCapability />
-      <IndustriesServed />
-      <AviationInsights posts={posts} />
-      <FinalCTA />
+        {/* Logo Cloud Section - Integrated with parent brand */}
+        <div className="relative z-20 bg-black py-16 border-y border-white/5">
+           <div className="max-w-[1400px] mx-auto px-8 md:px-12">
+              <div className="text-center mb-8">
+                <span className="text-brand-yellow text-[10px] font-black tracking-[0.3em] uppercase">
+                  {homeData?.logoCloudTitle || "Strategic Partner Network"}
+                </span>
+              </div>
+              <LogoCloud />
+           </div>
+        </div>
+
+        {/* Content Sections */}
+        <ServicesGrid />
+        <OperationalCapability 
+          title={homeData?.operationalTitle} 
+          description={homeData?.operationalDescription}
+          hubs={homeData?.capabilities}
+        />
+        <IndustriesServed 
+          title={homeData?.industryTitle}
+          description={homeData?.industryDescription}
+        />
+        <AviationInsights posts={posts} />
+        <FinalCTA />
+      </main>
+      
       <Footer />
     </div>
   );

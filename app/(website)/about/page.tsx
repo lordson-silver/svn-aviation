@@ -65,7 +65,7 @@ const GALLERY_IMAGES = [
   'https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=800&q=80',
   'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80',
   'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=800&q=80',
-  'https://images.unsplash.com/photo-1559686450-f0d9b03b8dd0?w=800&q=80',
+  'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=800&q=80',
 ];
 
 export default function AboutPage() {

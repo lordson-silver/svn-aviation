@@ -14,6 +14,18 @@ import {
   SheetTitle,
 } from '@/components/ui/sheet';
 
+const Logo = () => (
+  <div className="flex items-center gap-3">
+    <div className="relative w-14 h-10 flex items-center justify-center">
+      <Image src="/logo.svg" alt="SVN Aviation Logo" width={56} height={40} className="object-contain" priority />
+    </div>
+    <div className="flex flex-col leading-none">
+      <span className="text-lg md:text-xl font-bold tracking-tight text-white font-serif uppercase">SVN Aviation</span>
+      <span className="text-[8px] md:text-[9px] tracking-[0.2em] text-brand-yellow font-bold uppercase mt-0.5">Schnell Vogel Nigeria</span>
+    </div>
+  </div>
+);
+
 export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -36,24 +48,14 @@ export function Navbar() {
     { name: 'Contact', href: '/contact' },
   ];
 
-  const Logo = () => (
-    <div className="flex items-center gap-3">
-      <div className="relative w-14 h-10 flex items-center justify-center">
-        <Image src="/logo.svg" alt="SVN Aviation Logo" width={56} height={40} className="object-contain" priority />
-      </div>
-      <div className="flex flex-col leading-none">
-        <span className="text-xl font-bold tracking-tight text-white font-serif uppercase">SVN Aviation</span>
-        <span className="text-[9px] tracking-[0.2em] text-brand-yellow font-bold uppercase mt-0.5">Schnell Vogel Nigeria</span>
-      </div>
-    </div>
-  );
+
 
   return (
     <nav className={cn(
       "fixed left-0 right-0 z-50 transition-all duration-500 flex items-center justify-between mx-auto",
       isScrolled 
-        ? "top-0 py-4 px-8 md:px-16 lg:px-24 bg-black/80 backdrop-blur-2xl border-b border-white/10 shadow-2xl w-full max-w-none" 
-        : "top-8 px-6 md:px-12 w-full max-w-[1400px]"
+        ? "top-0 py-3 px-6 md:py-4 md:px-16 lg:px-24 bg-black/80 backdrop-blur-2xl border-b border-white/10 shadow-2xl w-full max-w-none" 
+        : "top-4 px-5 md:top-8 md:px-12 w-full max-w-[1400px]"
     )}>
       <Logo />
 
