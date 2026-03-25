@@ -3,9 +3,15 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { motion, type Variants } from 'framer-motion';
-import { ArrowRight, Phone, Mail, MapPin, Clock, ChevronRight, Send } from 'lucide-react';
+import { 
+  ArrowRight, Phone, Mail, MapPin, Clock, ChevronRight, Send, 
+  Search, Calendar, Users as UsersIcon, PlaneTakeoff, PlaneLanding 
+} from 'lucide-react';
 import { Navbar } from '@/components/ui/navbar';
 import { Footer } from '@/components/sections/footer';
+import { SERVICES, LOCATIONS } from '@/lib/services';
+
+const ALL_SERVICES = SERVICES.flatMap(cat => cat.items);
 
 const OFFICES = [
   {
@@ -49,8 +55,24 @@ const MAP_EMBED_URLS: Record<string, string> = {
 
 export default function ContactPage() {
   const [activeCity, setActiveCity] = useState('Lagos');
-  const [form, setForm] = useState({ name: '', phone: '', email: '', subject: '', message: '' });
+  const [form, setForm] = useState({ 
+    name: '', 
+    phone: '', 
+    email: '', 
+    passengers: '1',
+    pickup: '',
+    destination: '',
+    service: '',
+    date: '',
+    message: '' 
+  });
   const [sent, setSent] = useState(false);
+  const [serviceSearch, setServiceSearch] = useState('');
+  const [showServiceDropdown, setShowServiceDropdown] = useState(false);
+
+  const filteredServices = ALL_SERVICES.filter(s => 
+    s.toLowerCase().includes(serviceSearch.toLowerCase())
+  );
 
   const fadeUp: Variants = {
     hidden: { opacity: 0, y: 30 },
@@ -61,11 +83,48 @@ export default function ContactPage() {
     }),
   };
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    setSent(true);
-    setTimeout(() => setSent(false), 4000);
-    setForm({ name: '', phone: '', email: '', subject: '', message: '' });
+    
+    // Automatic Sanitization and Formatting
+    const sanitizedData = {
+      name: form.name.trim(),
+      phone: form.phone.trim(),
+      email: form.email.trim().toLowerCase(),
+      passengers: parseInt(form.passengers) || 1,
+      pickup: form.pickup || 'Not Specified',
+      destination: form.destination || 'Not Specified',
+      service: form.service || serviceSearch || 'General Inquiry',
+      date: form.date,
+      message: form.message.trim().replace(/<[^>]*>?/gm, ''), // Basic HTML tag strip
+    };
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(sanitizedData),
+      });
+
+      if (response.ok) {
+        setSent(true);
+        setTimeout(() => setSent(false), 5000);
+        setForm({ 
+          name: '', phone: '', email: '', passengers: '1',
+          pickup: '', destination: '', service: '', date: '', message: '' 
+        });
+        setServiceSearch('');
+      } else {
+        const error = await response.json();
+        console.error('Submission failed:', error);
+        alert('Operation Failed: Please try again or contact us directly at ops@svnaviation.ng');
+      }
+    } catch (err) {
+      console.error('Network Error:', err);
+      alert('Network Error: Please check your connection.');
+    }
   }
 
   return (
@@ -104,7 +163,7 @@ export default function ContactPage() {
               transition={{ delay: 0.3, duration: 0.8 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black leading-[0.95] font-serif uppercase tracking-tighter"
             >
-              Get In Touch
+              Request A Quote
             </motion.h1>
           </div>
         </section>
@@ -122,18 +181,18 @@ export default function ContactPage() {
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <span className="text-brand-yellow text-[10px] font-black tracking-[0.35em] uppercase">Get In Touch</span>
-              <h2 className="text-4xl md:text-5xl font-serif font-black mt-4 mb-10">Send A Message</h2>
+              <span className="text-brand-yellow text-[10px] font-black tracking-[0.35em] uppercase">Flight Inquiry</span>
+              <h2 className="text-4xl md:text-5xl font-serif font-black mt-4 mb-10">Charter Details</h2>
 
               {sent && (
                 <div className="bg-brand-yellow/10 border border-brand-yellow/30 text-brand-yellow px-6 py-4 rounded-xl mb-8 text-sm font-bold flex items-center gap-3">
                   <Send className="w-4 h-4 flex-shrink-0" />
-                  Message sent! Our team will respond within 24 hours.
+                  Quote request sent! Our team will respond within 24 hours.
                 </div>
               )}
 
               <form onSubmit={handleSubmit} className="flex flex-col gap-4">
-                {/* Row 1 */}
+                {/* Name & Phone */}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div className="relative group">
                     <input
@@ -147,6 +206,7 @@ export default function ContactPage() {
                   </div>
                   <div className="relative group">
                     <input
+                      required
                       type="tel"
                       placeholder="Phone number"
                       value={form.phone}
@@ -156,7 +216,7 @@ export default function ContactPage() {
                   </div>
                 </div>
 
-                {/* Row 2 */}
+                {/* Email & Passengers */}
                 <div className="grid sm:grid-cols-2 gap-4">
                   <input
                     required
@@ -166,23 +226,108 @@ export default function ContactPage() {
                     onChange={(e) => setForm({ ...form, email: e.target.value })}
                     className="w-full bg-white/5 border border-white/10 focus:border-brand-yellow text-white placeholder:text-white/30 px-5 py-4 rounded-xl text-sm font-medium outline-none transition-all"
                   />
-                  <input
-                    type="text"
-                    placeholder="Subject"
-                    value={form.subject}
-                    onChange={(e) => setForm({ ...form, subject: e.target.value })}
-                    className="w-full bg-white/5 border border-white/10 focus:border-brand-yellow text-white placeholder:text-white/30 px-5 py-4 rounded-xl text-sm font-medium outline-none transition-all"
-                  />
+                  <div className="relative flex items-center">
+                    <UsersIcon className="absolute left-5 w-4 h-4 text-white/30" />
+                    <input
+                      type="number"
+                      min="1"
+                      placeholder="Passengers"
+                      value={form.passengers}
+                      onChange={(e) => setForm({ ...form, passengers: e.target.value })}
+                      className="w-full bg-white/5 border border-white/10 focus:border-brand-yellow text-white placeholder:text-white/30 pl-12 pr-5 py-4 rounded-xl text-sm font-medium outline-none transition-all"
+                    />
+                  </div>
+                </div>
+
+                {/* Pickup & Destination */}
+                <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="relative">
+                    <PlaneTakeoff className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-yellow/50" />
+                    <select
+                      value={form.pickup}
+                      onChange={(e) => setForm({ ...form, pickup: e.target.value })}
+                      className="w-full bg-white/5 border border-white/10 focus:border-brand-yellow text-white px-12 py-4 rounded-xl text-sm font-medium outline-none appearance-none cursor-pointer transition-all"
+                    >
+                      <option value="" disabled className="bg-black text-white/30">Pickup Location</option>
+                      {LOCATIONS.map(loc => (
+                        <option key={loc.name} value={loc.name} className="bg-black">{loc.name}</option>
+                      ))}
+                      <option value="Other" className="bg-black">Other / Special Request</option>
+                    </select>
+                  </div>
+                  <div className="relative">
+                    <PlaneLanding className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-brand-yellow/50" />
+                    <select
+                      value={form.destination}
+                      onChange={(e) => setForm({ ...form, destination: e.target.value })}
+                      className="w-full bg-white/5 border border-white/10 focus:border-brand-yellow text-white px-12 py-4 rounded-xl text-sm font-medium outline-none appearance-none cursor-pointer transition-all"
+                    >
+                      <option value="" disabled className="bg-black text-white/30">Destination</option>
+                      {LOCATIONS.map(loc => (
+                        <option key={loc.name} value={loc.name} className="bg-black">{loc.name}</option>
+                      ))}
+                      <option value="Other" className="bg-black">Other / Special Request</option>
+                    </select>
+                  </div>
+                </div>
+
+                {/* Service & Date */}
+                <div className="grid sm:grid-cols-2 gap-4 items-start">
+                  <div className="relative">
+                    <Search className="absolute left-5 top-4 w-4 h-4 text-white/30" />
+                    <input
+                      type="text"
+                      placeholder="Type to search service..."
+                      value={serviceSearch}
+                      onFocus={() => setShowServiceDropdown(true)}
+                      onChange={(e) => {
+                        setServiceSearch(e.target.value);
+                        setShowServiceDropdown(true);
+                      }}
+                      className="w-full bg-white/5 border border-white/10 focus:border-brand-yellow text-white placeholder:text-white/30 pl-12 pr-5 py-4 rounded-xl text-sm font-medium outline-none transition-all"
+                    />
+                    {showServiceDropdown && serviceSearch && (
+                      <div className="absolute z-50 left-0 right-0 mt-2 bg-neutral-900 border border-white/10 rounded-xl max-h-60 overflow-y-auto shadow-2xl backdrop-blur-xl">
+                        {filteredServices.length > 0 ? (
+                          filteredServices.map((s, i) => (
+                            <button
+                              key={i}
+                              type="button"
+                              onClick={() => {
+                                setForm({ ...form, service: s });
+                                setServiceSearch(s);
+                                setShowServiceDropdown(false);
+                              }}
+                              className="w-full text-left px-5 py-3 text-xs hover:bg-brand-yellow hover:text-black transition-colors border-b border-white/5 last:border-0"
+                            >
+                              {s}
+                            </button>
+                          ))
+                        ) : (
+                          <div className="px-5 py-3 text-xs text-white/50">No service found. You can still type your request.</div>
+                        )}
+                      </div>
+                    )}
+                  </div>
+                  <div className="relative">
+                    <Calendar className="absolute left-5 top-1/2 -translate-y-1/2 w-4 h-4 text-white/30" />
+                    <input
+                      required
+                      type="date"
+                      value={form.date}
+                      onChange={(e) => setForm({ ...form, date: e.target.value })}
+                      className="w-full bg-white/5 border border-white/10 focus:border-brand-yellow text-white px-12 py-4 rounded-xl text-sm font-medium outline-none transition-all [color-scheme:dark] cursor-pointer"
+                    />
+                  </div>
                 </div>
 
                 {/* Message */}
                 <textarea
-                  required
-                  rows={6}
-                  placeholder="Message goes here..."
+                  rows={4}
+                  placeholder="Additional requests or instructions..."
                   value={form.message}
                   onChange={(e) => setForm({ ...form, message: e.target.value })}
-                  className="w-full bg-white/5 border border-white/10 focus:border-brand-yellow text-white placeholder:text-white/30 px-5 py-4 rounded-xl text-sm font-medium outline-none transition-all resize-y min-h-[140px]"
+                  className="w-full bg-white/5 border border-white/10 focus:border-brand-yellow text-white placeholder:text-white/30 px-5 py-4 rounded-xl text-sm font-medium outline-none transition-all resize-y min-h-[120px]"
                 />
 
                 <div className="pt-2">
@@ -241,7 +386,7 @@ export default function ContactPage() {
               {/* Active office info */}
               {OFFICES.filter((o) => o.city === activeCity).map((office) => (
                 <div key={office.city} className="bg-white/5 border border-white/10 rounded-2xl p-6 flex flex-col gap-3">
-                  <h3 className="text-brand-yellow text-[10px] font-black tracking-[0.3em] uppercase mb-1">{office.label}</h3>
+                  <h3 className="text-brand-yellow text-[10px] font-black tracking-[0.35em] uppercase mb-1">{office.label}</h3>
                   <div className="flex items-start gap-3 text-sm text-white/70">
                     <MapPin className="w-4 h-4 text-brand-yellow mt-0.5 flex-shrink-0" />
                     <span>{office.address}</span>
