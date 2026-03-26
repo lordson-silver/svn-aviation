@@ -18,7 +18,7 @@ export function FinalCTA() {
                 Ready for <br /> Aviation Deployment?
               </h2>
               <p className="text-xl text-white/50 font-light leading-relaxed mb-12 max-w-md">
-                SVN Aviation operations team is available 24/7 for charter and logistics management. Backed by the logistics power of Schnell Vogel Nigeria Limited.
+                SVN Aviation operations team is available 24/7 for charter and logistics management. SVN Aviation is a trading name of Schnell Vogel Nigeria Limited.
               </p>
               
               <div className="flex flex-col sm:flex-row gap-6">

@@ -1,0 +1,388 @@
+export interface CharterRoute {
+  slug: string;
+  origin: string;
+  destination: string;
+  originAirport: string;
+  destinationAirport: string;
+  flightTime: string;
+  distance: string;
+  heroImage: string;
+  metaTitle: string;
+  metaDescription: string;
+  intro: string;
+  aboutRoute: string;
+  aircraftOptions: {
+    type: string;
+    passengers: string;
+    description: string;
+  }[];
+  whoUsesThisRoute: string[];
+  whyCharter: string[];
+  howItWorks: string[];
+  relatedRoutes: string[]; // slugs
+}
+
+export const charterRoutes: CharterRoute[] = [
+  {
+    slug: 'lagos-to-abuja-private-jet-charter',
+    origin: 'Lagos',
+    destination: 'Abuja',
+    originAirport: 'Murtala Muhammed International Airport (LOS)',
+    destinationAirport: 'Nnamdi Azikiwe International Airport (ABV)',
+    flightTime: '1 hour',
+    distance: '750 km',
+    heroImage: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=2000&q=80&auto=format&fit=crop',
+    metaTitle: 'Lagos to Abuja Private Jet Charter | SVN Aviation',
+    metaDescription: 'Book a private jet charter from Lagos to Abuja with SVN Aviation. Fast, flexible, and secure executive flights connecting Nigeria\'s commercial and federal capitals. Request a quote today.',
+    intro: 'Private jet charter from Lagos to Abuja provides a fast, flexible, and efficient travel solution for corporate executives, government officials, and private clients in Nigeria. SVN Aviation, a trading name of Schnell Vogel Nigeria Limited, coordinates reliable charter flight services ensuring a smooth and seamless travel experience between Lagos and Abuja. Whether you need to attend a business meeting in the federal capital territory or return to Lagos the same day, our charter coordination team ensures your flight is arranged with precision and discretion.',
+    aboutRoute: 'The Lagos to Abuja route is one of the busiest charter flight routes in Nigeria, connecting the commercial capital with the federal capital city. Charter flights on this route are ideal for time-sensitive travel, allowing passengers to avoid the delays, crowds, and security queues associated with commercial airlines. With multiple daily departure windows available and the flexibility to fly on your own schedule, this route is the preferred choice for executives who value their time. Typical departure points include Murtala Muhammed International Airport in Lagos (Ikeja) and the Murtala Muhammed Airport (MMA2) general aviation terminal for private flights.',
+    aircraftOptions: [
+      { type: 'Light Jets', passengers: '4–6 passengers', description: 'Ideal for quick executive hops between Lagos and Abuja. Cost-effective for small groups with a flight time of approximately 55 minutes.' },
+      { type: 'Midsize Jets', passengers: '6–9 passengers', description: 'The most popular choice for corporate delegations. Offers a spacious cabin, in-flight connectivity, and full refreshment service.' },
+      { type: 'Heavy Jets', passengers: '10–16 passengers', description: 'Best for larger corporate groups or VIP delegations requiring maximum cabin space, conference seating, and premium in-flight amenities.' },
+      { type: 'Helicopters', passengers: '4–8 passengers', description: 'Available for point-to-point transfers within Lagos or Abuja metro areas, connecting directly to helipads at hotels, residences, and office complexes.' },
+    ],
+    whoUsesThisRoute: [
+      'Corporate executives and C-suite officers',
+      'Oil & gas industry professionals',
+      'Government officials and diplomats',
+      'High-net-worth individuals and families',
+      'Legal and financial professionals attending court or regulatory sessions in Abuja',
+      'Medical professionals requiring urgent patient transfer',
+    ],
+    whyCharter: [
+      'Flexible departure times — fly when you want, not when the airline schedules',
+      'No long airport queues — arrive 15 minutes before departure',
+      'Complete privacy and confidentiality for sensitive business travel',
+      'Direct point-to-point travel with no layovers or connections',
+      'Ability to return the same day — Lagos-Abuja-Lagos in under 5 hours total',
+      'Dedicated cabin for your group — no strangers, no interruptions',
+    ],
+    howItWorks: [
+      'Submit your charter request via our online form, WhatsApp, or phone call',
+      'Our charter coordination team reviews aircraft availability and provides you with options and pricing within 2 hours',
+      'Confirm your preferred aircraft, departure time, and passenger manifest',
+      'Arrive at the private aviation terminal 15 minutes before departure',
+      'Your flight is executed with full safety compliance and real-time tracking',
+    ],
+    relatedRoutes: ['abuja-to-lagos-private-jet-charter', 'lagos-to-port-harcourt-charter', 'abuja-to-port-harcourt-charter'],
+  },
+  {
+    slug: 'abuja-to-lagos-private-jet-charter',
+    origin: 'Abuja',
+    destination: 'Lagos',
+    originAirport: 'Nnamdi Azikiwe International Airport (ABV)',
+    destinationAirport: 'Murtala Muhammed International Airport (LOS)',
+    flightTime: '1 hour',
+    distance: '750 km',
+    heroImage: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=2000&q=80&auto=format&fit=crop',
+    metaTitle: 'Abuja to Lagos Private Jet Charter | SVN Aviation',
+    metaDescription: 'Charter a private jet from Abuja to Lagos with SVN Aviation. Executive flights with flexible scheduling, privacy, and same-day return capability.',
+    intro: 'Private jet charter from Abuja to Lagos offers an unmatched travel experience for executives, government officials, and business leaders who need to move between Nigeria\'s two most important cities quickly, securely, and comfortably. SVN Aviation coordinates seamless charter flights from Nnamdi Azikiwe International Airport directly to Lagos, eliminating the stress and delays of commercial air travel. Our charter desk is available 24/7 to arrange your mission.',
+    aboutRoute: 'The Abuja to Lagos corridor is arguably the most critical business travel route in West Africa. As the seat of the federal government, Abuja hosts countless government agencies, embassies, regulatory bodies, and corporate headquarters that maintain strong operational ties with Lagos — Nigeria\'s economic engine. Charter flights on this route are essential for professionals who cannot afford the unpredictability of commercial airline schedules, especially during peak political and legislative seasons when last-minute travel is common.',
+    aircraftOptions: [
+      { type: 'Light Jets', passengers: '4–6 passengers', description: 'Perfect for solo executives or small teams. Fast turnaround and efficient for frequent Lagos-Abuja commuters.' },
+      { type: 'Midsize Jets', passengers: '6–9 passengers', description: 'Popular with corporate delegations attending regulatory meetings or court proceedings. Full cabin service included.' },
+      { type: 'Heavy Jets', passengers: '10–16 passengers', description: 'Ideal for ministerial delegations, board meetings, or large corporate groups requiring premium amenities.' },
+      { type: 'Helicopters', passengers: '4–8 passengers', description: 'For intra-city transfers within Abuja or Lagos, connecting airports to final destinations via helipad.' },
+    ],
+    whoUsesThisRoute: [
+      'Federal government officials and legislators',
+      'Corporate executives with Lagos headquarters',
+      'Diplomats and embassy staff',
+      'Legal professionals attending federal courts',
+      'Financial sector executives',
+      'Private individuals with time-critical engagements',
+    ],
+    whyCharter: [
+      'Bypass commercial airline delays and cancellations',
+      'Arrive at private terminals with minimal wait time',
+      'Full privacy for confidential travel and in-flight meetings',
+      'Same-day return flights possible',
+      'Custom departure times aligned with your schedule',
+      'Secure and discreet — no public exposure',
+    ],
+    howItWorks: [
+      'Contact our charter desk via form, WhatsApp, or phone',
+      'Receive aircraft options and pricing within 2 hours',
+      'Confirm aircraft, schedule, and passenger details',
+      'Arrive at the Abuja private aviation terminal 15 minutes before departure',
+      'Fly direct to Lagos with full safety and tracking protocols',
+    ],
+    relatedRoutes: ['lagos-to-abuja-private-jet-charter', 'abuja-to-port-harcourt-charter', 'lagos-to-port-harcourt-charter'],
+  },
+  {
+    slug: 'lagos-to-port-harcourt-charter',
+    origin: 'Lagos',
+    destination: 'Port Harcourt',
+    originAirport: 'Murtala Muhammed International Airport (LOS)',
+    destinationAirport: 'Port Harcourt International Airport (PHC)',
+    flightTime: '1 hour 10 minutes',
+    distance: '530 km',
+    heroImage: 'https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=2000&q=80&auto=format&fit=crop',
+    metaTitle: 'Lagos to Port Harcourt Charter Flight | SVN Aviation',
+    metaDescription: 'Book charter flights from Lagos to Port Harcourt. Private jet and helicopter options for oil & gas professionals, executives, and VIP travelers. Request a quote.',
+    intro: 'Charter flights from Lagos to Port Harcourt serve as a critical aviation link between Nigeria\'s commercial hub and the heart of the country\'s oil and gas industry. SVN Aviation coordinates private jet and helicopter charter services on this route for corporate clients, oil & gas companies, and high-net-worth individuals who require fast, reliable, and discreet transportation. Port Harcourt\'s proximity to major offshore platforms and onshore installations makes this one of the most commercially significant charter routes in Nigeria.',
+    aboutRoute: 'Lagos to Port Harcourt is a high-demand route driven primarily by the energy sector. Thousands of oil and gas professionals, engineers, and executives travel this corridor monthly. Commercial airlines often experience delays, cancellations, and overbooking on this route, making private charter the preferred choice for time-sensitive travel. Charter flights depart from the private aviation terminals in Lagos and arrive at Port Harcourt International Airport, with helicopter connections available to offshore platforms and remote onshore locations in the Niger Delta.',
+    aircraftOptions: [
+      { type: 'Light Jets', passengers: '4–6 passengers', description: 'Cost-effective for small teams traveling between Lagos and Port Harcourt. Quick turnaround available.' },
+      { type: 'Midsize Jets', passengers: '6–9 passengers', description: 'Preferred by oil & gas companies for crew movements and executive transfers.' },
+      { type: 'Heavy Jets', passengers: '10–16 passengers', description: 'Suitable for large crew rotations or corporate delegations.' },
+      { type: 'Helicopters', passengers: '4–12 passengers', description: 'Essential for connecting Port Harcourt airport to offshore platforms, FPSOs, and remote Niger Delta locations.' },
+    ],
+    whoUsesThisRoute: [
+      'Oil & gas company executives and field engineers',
+      'Offshore platform crew members',
+      'Energy sector contractors and service companies',
+      'Corporate executives with operations in Port Harcourt',
+      'Government officials overseeing Niger Delta operations',
+      'Medical evacuation teams',
+    ],
+    whyCharter: [
+      'Avoid frequent commercial flight delays on this route',
+      'Connect directly to offshore platforms via helicopter from PH',
+      'Transport critical equipment and personnel simultaneously',
+      'Flexible scheduling aligned with offshore crew rotation cycles',
+      'Privacy and security for senior executives',
+      'Same-day Lagos-PH-Lagos possible',
+    ],
+    howItWorks: [
+      'Submit your request with travel dates and passenger count',
+      'Receive aircraft options including helicopter connections to offshore platforms',
+      'Confirm your itinerary and special requirements',
+      'Depart from Lagos private aviation terminal',
+      'Arrive in Port Harcourt with optional helicopter transfer to final destination',
+    ],
+    relatedRoutes: ['port-harcourt-to-lagos-charter', 'lagos-to-abuja-private-jet-charter', 'lagos-to-warri-charter'],
+  },
+  {
+    slug: 'port-harcourt-to-lagos-charter',
+    origin: 'Port Harcourt',
+    destination: 'Lagos',
+    originAirport: 'Port Harcourt International Airport (PHC)',
+    destinationAirport: 'Murtala Muhammed International Airport (LOS)',
+    flightTime: '1 hour 10 minutes',
+    distance: '530 km',
+    heroImage: 'https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=2000&q=80&auto=format&fit=crop',
+    metaTitle: 'Port Harcourt to Lagos Charter Flight | SVN Aviation',
+    metaDescription: 'Private jet and helicopter charter from Port Harcourt to Lagos. Reliable aviation services for oil & gas, corporate, and VIP clients. Contact SVN Aviation.',
+    intro: 'Charter flights from Port Harcourt to Lagos provide essential connectivity for professionals working in Nigeria\'s oil and gas capital who need to reach Lagos for business, regulatory, or personal engagements. SVN Aviation coordinates efficient private jet and helicopter charter services on this route, ensuring minimal downtime and maximum flexibility for our clients. Whether you are returning from an offshore deployment or heading to a corporate meeting in Lagos, our team handles every detail.',
+    aboutRoute: 'Port Harcourt to Lagos is a return corridor frequently used by energy sector professionals completing offshore rotations or field assignments in the Niger Delta region. This route is also popular with corporate executives who maintain dual operations between Lagos and Port Harcourt. The unreliability of commercial flights on this route — including frequent delays and last-minute cancellations — has made charter flights the standard for organizations that prioritize operational continuity and employee welfare.',
+    aircraftOptions: [
+      { type: 'Light Jets', passengers: '4–6 passengers', description: 'Quick and efficient for returning executives or small engineering teams.' },
+      { type: 'Midsize Jets', passengers: '6–9 passengers', description: 'Comfortable option for corporate groups with luggage and equipment.' },
+      { type: 'Heavy Jets', passengers: '10–16 passengers', description: 'Best for large crew rotations returning to Lagos after offshore deployments.' },
+      { type: 'Helicopters', passengers: '4–12 passengers', description: 'Connects offshore platforms directly to Port Harcourt airport for onward fixed-wing charter to Lagos.' },
+    ],
+    whoUsesThisRoute: [
+      'Returning offshore crew members',
+      'Oil & gas executives based in Port Harcourt',
+      'Corporate professionals with Lagos head offices',
+      'Medical evacuation cases requiring Lagos hospital access',
+      'Government and regulatory officials',
+      'VIP and private travelers',
+    ],
+    whyCharter: [
+      'Guaranteed departure — no commercial airline cancellation risk',
+      'Helicopter pickup from offshore platforms before Lagos-bound flight',
+      'Crew-friendly scheduling aligned with rotation calendars',
+      'Equipment and luggage capacity beyond commercial limits',
+      'Privacy and comfort after demanding field assignments',
+      'Arrive in Lagos ready for business, not exhausted from delays',
+    ],
+    howItWorks: [
+      'Contact SVN Aviation with your departure date and crew size',
+      'Receive coordination plan including helicopter-to-jet connections if needed',
+      'Confirm manifest, departure time, and any special cargo',
+      'Board at Port Harcourt private aviation terminal',
+      'Arrive in Lagos with ground transport arranged if required',
+    ],
+    relatedRoutes: ['lagos-to-port-harcourt-charter', 'port-harcourt-to-abuja-charter', 'abuja-to-lagos-private-jet-charter'],
+  },
+  {
+    slug: 'abuja-to-port-harcourt-charter',
+    origin: 'Abuja',
+    destination: 'Port Harcourt',
+    originAirport: 'Nnamdi Azikiwe International Airport (ABV)',
+    destinationAirport: 'Port Harcourt International Airport (PHC)',
+    flightTime: '1 hour 20 minutes',
+    distance: '680 km',
+    heroImage: 'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=2000&q=80&auto=format&fit=crop',
+    metaTitle: 'Abuja to Port Harcourt Charter Flight | SVN Aviation',
+    metaDescription: 'Charter flights from Abuja to Port Harcourt. Private jet services for government, oil & gas, and corporate clients. Reliable, fast, and discreet. Book now.',
+    intro: 'Private charter flights from Abuja to Port Harcourt connect Nigeria\'s administrative capital with the country\'s most important energy hub. SVN Aviation coordinates private jet and helicopter services on this route for government delegations, oil & gas executives, and corporate clients who need to move quickly between these two critical cities. With commercial options on this route being limited and often unreliable, charter flights have become the operational standard for professionals who cannot afford delays.',
+    aboutRoute: 'The Abuja to Port Harcourt route serves a unique function in Nigeria\'s aviation landscape. Government officials frequently travel this route for oversight of Niger Delta development programs, oil industry regulation, and security operations. Energy sector executives use this route to connect federal regulatory meetings in Abuja with field operations in Rivers State. The limited frequency and reliability of commercial flights between these cities makes charter aviation essential for time-critical missions.',
+    aircraftOptions: [
+      { type: 'Light Jets', passengers: '4–6 passengers', description: 'Efficient for individual executives or small government teams.' },
+      { type: 'Midsize Jets', passengers: '6–9 passengers', description: 'Ideal for ministerial delegations and corporate groups.' },
+      { type: 'Heavy Jets', passengers: '10–16 passengers', description: 'Required for large delegations with full support staff.' },
+      { type: 'Helicopters', passengers: '4–8 passengers', description: 'Available for Port Harcourt onward connections to oil fields and offshore platforms.' },
+    ],
+    whoUsesThisRoute: [
+      'Government ministers and regulatory officials',
+      'Oil & gas company leadership',
+      'Niger Delta development agency staff',
+      'Security and defense personnel',
+      'Corporate executives with Port Harcourt operations',
+      'International organization representatives',
+    ],
+    whyCharter: [
+      'Limited commercial flight options on this route',
+      'Flexible timing for government and diplomatic schedules',
+      'Secure and discreet transportation',
+      'Helicopter connections to Niger Delta locations upon arrival',
+      'Same-day return capability',
+      'Full control over passenger manifest and cargo',
+    ],
+    howItWorks: [
+      'Submit your request with mission details and security requirements',
+      'Our team provides aircraft options suited to your delegation size',
+      'Confirm scheduling, ground transport, and any onward helicopter connections',
+      'Depart from Abuja presidential/private aviation wing',
+      'Arrive in Port Harcourt with seamless onward coordination',
+    ],
+    relatedRoutes: ['port-harcourt-to-abuja-charter', 'abuja-to-lagos-private-jet-charter', 'lagos-to-port-harcourt-charter'],
+  },
+  {
+    slug: 'port-harcourt-to-abuja-charter',
+    origin: 'Port Harcourt',
+    destination: 'Abuja',
+    originAirport: 'Port Harcourt International Airport (PHC)',
+    destinationAirport: 'Nnamdi Azikiwe International Airport (ABV)',
+    flightTime: '1 hour 20 minutes',
+    distance: '680 km',
+    heroImage: 'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=2000&q=80&auto=format&fit=crop',
+    metaTitle: 'Port Harcourt to Abuja Charter Flight | SVN Aviation',
+    metaDescription: 'Book private charter flights from Port Harcourt to Abuja with SVN Aviation. Fast, secure aviation services for oil & gas, government, and corporate travelers.',
+    intro: 'Charter flights from Port Harcourt to Abuja provide essential connectivity for energy sector professionals, government officials, and corporate executives who need to reach the federal capital quickly and securely. SVN Aviation coordinates reliable private jet charter services on this route, offering flexible scheduling and discreet transportation that commercial airlines simply cannot match. Our operations team ensures every flight is planned with precision and executed to the highest safety standards.',
+    aboutRoute: 'The Port Harcourt to Abuja route captures a significant volume of charter traffic driven by regulatory requirements, government liaisons, and corporate governance needs. Oil and gas companies regularly charter flights on this route for executives attending NNPC meetings, DPR hearings, and other regulatory engagements in Abuja. The route also serves security operations, diplomatic missions, and emergency medical evacuations requiring access to Abuja\'s specialized medical facilities.',
+    aircraftOptions: [
+      { type: 'Light Jets', passengers: '4–6 passengers', description: 'Quick and cost-effective for individual executives or small teams.' },
+      { type: 'Midsize Jets', passengers: '6–9 passengers', description: 'Spacious cabin for comfortable travel after field operations.' },
+      { type: 'Heavy Jets', passengers: '10–16 passengers', description: 'For large groups including security details and support staff.' },
+      { type: 'Helicopters', passengers: '4–8 passengers', description: 'For Niger Delta to Port Harcourt airport connections before onward jet charter.' },
+    ],
+    whoUsesThisRoute: [
+      'Oil & gas executives attending NNPC/regulatory meetings in Abuja',
+      'State government officials',
+      'Corporate leaders with federal-level engagements',
+      'Legal professionals attending federal courts',
+      'Emergency medical evacuation teams',
+      'Security and intelligence personnel',
+    ],
+    whyCharter: [
+      'Unreliable commercial scheduling on this route',
+      'Need for secure, discreet travel for government officials',
+      'Helicopter-to-jet connectivity from Niger Delta oil fields',
+      'Time-critical travel for regulatory deadlines',
+      'Comfortable cabin environment after field deployments',
+      'Full manifest control — fly only with your team',
+    ],
+    howItWorks: [
+      'Contact our 24/7 charter desk with your travel requirements',
+      'Receive tailored aircraft and scheduling options',
+      'Confirm passenger manifest and any special security protocols',
+      'Board at Port Harcourt private terminal',
+      'Arrive in Abuja with optional ground transport to your destination',
+    ],
+    relatedRoutes: ['abuja-to-port-harcourt-charter', 'port-harcourt-to-lagos-charter', 'abuja-to-lagos-private-jet-charter'],
+  },
+  {
+    slug: 'lagos-to-warri-charter',
+    origin: 'Lagos',
+    destination: 'Warri',
+    originAirport: 'Murtala Muhammed International Airport (LOS)',
+    destinationAirport: 'Osubi Airstrip (QRW)',
+    flightTime: '50 minutes',
+    distance: '370 km',
+    heroImage: 'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=2000&q=80&auto=format&fit=crop',
+    metaTitle: 'Lagos to Warri Charter Flight | Helicopter & Jet Charter',
+    metaDescription: 'Charter helicopter and jet flights from Lagos to Warri. Essential for oil & gas crews, offshore transfers, and corporate clients in Delta State. SVN Aviation.',
+    intro: 'Charter flights from Lagos to Warri serve as a vital aviation link for the oil and gas industry, connecting Nigeria\'s commercial capital with one of the most important energy production zones in the Niger Delta. SVN Aviation coordinates private jet and helicopter charter services on this route, primarily serving upstream oil operators, engineering contractors, and corporate executives with operations in Delta State. Warri\'s Osubi Airstrip is the primary gateway for charter operations in the western Niger Delta region.',
+    aboutRoute: 'The Lagos to Warri route is dominated by energy sector traffic. Warri and its surrounding areas — including Effurun, Ughelli, and Sapele — host major facilities for Shell, Chevron, NNPC, and numerous service companies. Charter flights to Warri are often part of a multimodal transport chain including helicopter connections to offshore platforms in the western offshore shelf. Osubi Airstrip, operated primarily for the oil and gas sector, provides dedicated handling for charter flights and crew movements.',
+    aircraftOptions: [
+      { type: 'Light Jets', passengers: '4–6 passengers', description: 'Quick transfer for executives visiting Warri-based operations.' },
+      { type: 'Midsize Jets', passengers: '6–9 passengers', description: 'Suitable for corporate visits and engineering team deployments.' },
+      { type: 'Helicopters', passengers: '4–12 passengers', description: 'The most common aircraft type on this route. Essential for connecting Warri to offshore platforms, flow stations, and remote sites in the Niger Delta.' },
+      { type: 'Turboprops', passengers: '6–19 passengers', description: 'Cost-effective for regular crew change flights and group transfers to Osubi Airstrip.' },
+    ],
+    whoUsesThisRoute: [
+      'Oil & gas exploration and production companies',
+      'Offshore crew members on rotation',
+      'Engineering and construction contractors',
+      'Environmental and safety consultants',
+      'Corporate executives visiting Delta State operations',
+      'Emergency response and medical evacuation teams',
+    ],
+    whyCharter: [
+      'No commercial airline service to Warri — charter is the only reliable option',
+      'Direct connection to offshore platforms via helicopter',
+      'Supports crew rotation schedules critical to operations',
+      'Transport equipment and personnel simultaneously',
+      'Avoid dangerous road travel through the Niger Delta',
+      'Rapid deployment for emergency operations',
+    ],
+    howItWorks: [
+      'Contact SVN Aviation with your crew size and deployment schedule',
+      'Receive aircraft options including helicopter-platform connections',
+      'Confirm manifest, special cargo requirements, and security needs',
+      'Depart from Lagos to Osubi Airstrip',
+      'Connect to helicopter for offshore or remote site transfer',
+    ],
+    relatedRoutes: ['lagos-to-port-harcourt-charter', 'lagos-to-calabar-charter', 'lagos-to-abuja-private-jet-charter'],
+  },
+  {
+    slug: 'lagos-to-calabar-charter',
+    origin: 'Lagos',
+    destination: 'Calabar',
+    originAirport: 'Murtala Muhammed International Airport (LOS)',
+    destinationAirport: 'Margaret Ekpo International Airport (CBQ)',
+    flightTime: '1 hour 30 minutes',
+    distance: '620 km',
+    heroImage: 'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=2000&q=80&auto=format&fit=crop',
+    metaTitle: 'Lagos to Calabar Charter Flight | SVN Aviation',
+    metaDescription: 'Private charter flights from Lagos to Calabar. Fast, reliable aviation for corporate, tourism, and government clients. Jet and helicopter options available.',
+    intro: 'Charter flights from Lagos to Calabar provide a fast and reliable travel option for corporate executives, government officials, and tourism operators who need to reach Cross River State efficiently. SVN Aviation coordinates private jet charter services on this route, offering a comfortable and time-saving alternative to the limited and often delayed commercial flight options. Calabar, known as the tourism capital of Nigeria, is also an important administrative and trade center requiring reliable air connectivity with Lagos.',
+    aboutRoute: 'The Lagos to Calabar route serves a diverse range of travelers. Beyond its importance as an administrative capital, Calabar is a growing hub for cross-border trade with Cameroon, eco-tourism, and agricultural export. The Calabar Free Trade Zone and various government development initiatives generate consistent demand for charter aviation. Margaret Ekpo International Airport in Calabar is equipped to handle private jet operations and offers a significantly less congested alternative to major hubs.',
+    aircraftOptions: [
+      { type: 'Light Jets', passengers: '4–6 passengers', description: 'Efficient and cost-effective for individual executives or small business teams.' },
+      { type: 'Midsize Jets', passengers: '6–9 passengers', description: 'Best for corporate groups and government delegations requiring additional cabin space.' },
+      { type: 'Heavy Jets', passengers: '10–16 passengers', description: 'Available for large delegations and groups with significant luggage or cargo.' },
+      { type: 'Turboprops', passengers: '6–19 passengers', description: 'A reliable and economical option for regular business travel on this route.' },
+    ],
+    whoUsesThisRoute: [
+      'Cross River State government officials',
+      'Corporate executives with Calabar operations',
+      'Free Trade Zone business operators',
+      'Tourism and hospitality industry professionals',
+      'International organization staff',
+      'Event organizers during Calabar Carnival season',
+    ],
+    whyCharter: [
+      'Limited and unreliable commercial flight frequency to Calabar',
+      'Avoid 12+ hour road journey from Lagos',
+      'Flexible scheduling for short business trips',
+      'Privacy and comfort for executive travel',
+      'Transport event equipment and VIP guests',
+      'Same-day return possible for focused business meetings',
+    ],
+    howItWorks: [
+      'Submit your charter request with preferred dates and group size',
+      'Receive aircraft recommendations and transparent pricing',
+      'Confirm your booking and passenger manifest',
+      'Depart from Lagos private aviation terminal',
+      'Arrive at Margaret Ekpo International Airport, Calabar',
+    ],
+    relatedRoutes: ['lagos-to-port-harcourt-charter', 'lagos-to-abuja-private-jet-charter', 'lagos-to-warri-charter'],
+  },
+];
+
+// Helper function to get a route by slug
+export function getRouteBySlug(slug: string): CharterRoute | undefined {
+  return charterRoutes.find(r => r.slug === slug);
+}
+
+// Helper function to get related routes
+export function getRelatedRoutes(slugs: string[]): CharterRoute[] {
+  return slugs.map(s => charterRoutes.find(r => r.slug === s)).filter(Boolean) as CharterRoute[];
+}

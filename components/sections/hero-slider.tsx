@@ -10,7 +10,7 @@ const DEFAULT_SLIDES = [
   {
     imageUrl: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=2000&auto=format&fit=crop",
     title: "Private Jet Charter in Nigeria",
-    subtitle: "On-demand executive flights and Private Jet Charter across Nigeria's strategic corridors.",
+    subtitle: "Charter flight coordination for corporate, oil & gas, and private clients across Lagos, Abuja, and Port Harcourt.",
     tagline: "WE CONNECT AND DELIVER",
     ctaText: "Request Charter",
     ctaLink: "/contact"
@@ -19,7 +19,7 @@ const DEFAULT_SLIDES = [
     imageUrl: "https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?q=80&w=2000&auto=format&fit=crop",
     title: "Critical Air Logistics",
     subtitle: "Delivering consistently for Oil & Gas industries with offshore crew transfers and specialized cargo.",
-    tagline: "A BRANCH OF SCHNELL VOGEL",
+    tagline: "A TRADING NAME OF SCHNELL VOGEL",
     ctaText: "View Logistics",
     ctaLink: "/#services"
   },

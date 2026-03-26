@@ -164,7 +164,7 @@ export function Footer() {
               &copy; {currentYear} SVN Aviation. All Rights Reserved.
             </div>
             <div className="text-[9px] font-bold tracking-[0.1em] text-brand-yellow/40 uppercase">
-              A Member of Schnell Vogel Nigeria Limited Group
+              A Trading Name of Schnell Vogel Nigeria Limited
             </div>
           </div>
         </div>

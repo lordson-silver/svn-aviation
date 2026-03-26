@@ -3,8 +3,10 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
 import { ArrowRight, ChevronDown, Menu, X, Phone } from 'lucide-react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import { SERVICES, LOCATIONS, homeServices } from '@/lib/services';
+import { locationPages } from '@/lib/locations';
 import { cn } from '@/lib/utils';
 import {
   Sheet,
@@ -26,6 +28,26 @@ const Logo = () => (
   </div>
 );
 
+const navDropServices = [
+  {
+    category: "Charter Services",
+    items: [
+      { name: "Private Jet Charter", href: "/services/private-jet-charter-nigeria" },
+      { name: "Helicopter Charter", href: "/services/helicopter-charter-nigeria" },
+      { name: "General Charter Flights", href: "/services/charter-flight-services-nigeria" },
+    ]
+  },
+  {
+    category: "Specialized Aviation",
+    items: [
+      { name: "Oil & Gas Charter Flights", href: "/services/offshore-crew-transfer" },
+      { name: "Air Cargo & Logistics", href: "/services/air-cargo-logistics" },
+      { name: "Emergency Charter Flights", href: "/services/emergency-operations" },
+      { name: "Aerial Survey & Filming", href: "/services/aerial-survey-filming" },
+    ]
+  }
+];
+
 export function Navbar() {
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
   const [mobileExpanded, setMobileExpanded] = useState<string | null>(null);
@@ -42,10 +64,10 @@ export function Navbar() {
   const navLinks = [
     { name: 'Home', href: '/' },
     { name: 'Services', href: '/#services', hasDropdown: true },
-    { name: 'Locations', href: '/#locations', hasDropdown: true },
+    { name: 'Routes', href: '/routes', hasDropdown: false },
+    { name: 'Locations', href: '/locations', hasDropdown: true },
     { name: 'About', href: '/about' },
     { name: 'Blog', href: '/blog' },
-    { name: 'Contact', href: '/contact' },
   ];
 
 
@@ -92,25 +114,22 @@ export function Navbar() {
                 >
                   {link.name === 'Services' ? (
                     <div className="flex gap-10">
-                      {SERVICES.map((category) => (
+                      {navDropServices.map((category) => (
                         <div key={category.category} className="flex flex-col gap-4">
                           <h3 className="text-brand-yellow text-[10px] tracking-[0.2em] font-black border-b border-brand-yellow/20 pb-2 mb-2 uppercase">
                             {category.category}
                           </h3>
                           <ul className="flex flex-col gap-3">
-                            {category.items.map((item) => {
-                              const service = homeServices.find(s => s.title.includes(item) || s.slug.includes(item.toLowerCase().replace(/\s+/g, '-')));
-                              return (
-                                <li key={item}>
-                                  <a 
-                                    href={service ? `/services/${service.slug}` : "/#services"} 
-                                    className="text-white/60 hover:text-white transition-colors normal-case tracking-normal font-semibold text-xs whitespace-nowrap block py-0.5"
-                                  >
-                                    {item}
-                                  </a>
-                                </li>
-                              );
-                            })}
+                            {category.items.map((item) => (
+                              <li key={item.name}>
+                                <a 
+                                  href={item.href} 
+                                  className="text-white/60 hover:text-white transition-colors normal-case tracking-normal font-semibold text-xs whitespace-nowrap block py-0.5"
+                                >
+                                  {item.name}
+                                </a>
+                              </li>
+                            ))}
                           </ul>
                         </div>
                       ))}
@@ -121,14 +140,18 @@ export function Navbar() {
                         Our Presence
                       </h3>
                       <ul className="grid grid-cols-1 gap-4">
-                        {LOCATIONS.map((loc) => (
-                          <li key={loc.name}>
-                            <a href="/contact" className="flex flex-col transition-all group/loc">
-                              <span className="text-white/80 group-hover/loc:text-white text-xs font-bold leading-tight">{loc.name}</span>
-                              <span className="text-[10px] text-white/40 group-hover/loc:text-brand-yellow/60 uppercase tracking-widest mt-0.5">Strategic Operations</span>
-                            </a>
-                          </li>
-                        ))}
+                        {LOCATIONS.map((loc) => {
+                          const locationPage = locationPages.find(p => p.cityName === loc.name);
+                          const hrefUrl = locationPage ? `/locations/${locationPage.slug}` : '/locations';
+                          return (
+                            <li key={loc.name}>
+                              <a href={hrefUrl} className="flex flex-col transition-all group/loc">
+                                <span className="text-white/80 group-hover/loc:text-white text-xs font-bold leading-tight">{loc.name}</span>
+                                <span className="text-[10px] text-white/40 group-hover/loc:text-brand-yellow/60 uppercase tracking-widest mt-0.5">Strategic Operations</span>
+                              </a>
+                            </li>
+                          );
+                        })}
                       </ul>
                     </div>
                   ) : null}
@@ -141,12 +164,12 @@ export function Navbar() {
 
       {/* Desktop CTA */}
       <div className="hidden lg:flex items-center gap-6">
-        <button className="flex items-center gap-3 bg-white hover:bg-white/90 text-brand-yellow px-6 py-2 rounded-full transition-all font-black text-[10px] tracking-[0.1em] uppercase shadow-xl group">
-          Book Consult
+        <Link href="/contact" className="flex items-center gap-3 bg-white hover:bg-white/90 text-brand-yellow px-6 py-2 rounded-full transition-all font-black text-[10px] tracking-[0.1em] uppercase shadow-xl group">
+          Contact
           <div className="w-7 h-7 rounded-full bg-brand-yellow flex items-center justify-center -mr-3 group-hover:rotate-45 transition-transform">
             <ArrowRight className="w-3.5 h-3.5 text-white" />
           </div>
-        </button>
+        </Link>
       </div>
 
       {/* Mobile Hamburger */}
@@ -212,37 +235,38 @@ export function Navbar() {
                         <div className="px-4 pb-3 pt-1">
                           {link.name === 'Services' ? (
                             <div className="flex flex-col gap-6">
-                              {SERVICES.map((category) => (
+                              {navDropServices.map((category) => (
                                 <div key={category.category}>
                                   <h3 className="text-brand-yellow text-[9px] tracking-[0.25em] font-black uppercase mb-3 px-2">{category.category}</h3>
                                   <ul className="flex flex-col gap-1">
-                                    {category.items.map((item) => {
-                                      const service = homeServices.find(s => s.title.includes(item) || s.slug.includes(item.toLowerCase().replace(/\s+/g, '-')));
-                                      return (
-                                        <li key={item}>
-                                          <a 
-                                            href={service ? `/services/${service.slug}` : "/#services"} 
-                                            className="text-white/50 hover:text-white text-xs font-semibold transition-colors block px-2 py-1.5 rounded-lg hover:bg-white/5"
-                                          >
-                                            {item}
-                                          </a>
-                                        </li>
-                                      );
-                                    })}
+                                    {category.items.map((item) => (
+                                      <li key={item.name}>
+                                        <a 
+                                          href={item.href} 
+                                          className="text-white/50 hover:text-white text-xs font-semibold transition-colors block px-2 py-1.5 rounded-lg hover:bg-white/5"
+                                        >
+                                          {item.name}
+                                        </a>
+                                      </li>
+                                    ))}
                                   </ul>
                                 </div>
                               ))}
                             </div>
                           ) : link.name === 'Locations' ? (
                             <ul className="flex flex-col gap-1">
-                              {LOCATIONS.map((loc) => (
-                                <li key={loc.name}>
-                                  <a href="/contact" className="flex flex-col px-2 py-2 rounded-lg hover:bg-white/5 transition-all group/loc">
-                                    <span className="text-white/70 group-hover/loc:text-white text-xs font-bold">{loc.name}</span>
-                                    <span className="text-[9px] text-white/30 group-hover/loc:text-brand-yellow/60 uppercase tracking-widest mt-0.5">Strategic Operations</span>
-                                  </a>
-                                </li>
-                              ))}
+                              {LOCATIONS.map((loc) => {
+                                const locationPage = locationPages.find(p => p.cityName === loc.name);
+                                const hrefUrl = locationPage ? `/locations/${locationPage.slug}` : '/locations';
+                                return (
+                                  <li key={loc.name}>
+                                    <a href={hrefUrl} className="flex flex-col px-2 py-2 rounded-lg hover:bg-white/5 transition-all group/loc">
+                                      <span className="text-white/70 group-hover/loc:text-white text-xs font-bold">{loc.name}</span>
+                                      <span className="text-[9px] text-white/30 group-hover/loc:text-brand-yellow/60 uppercase tracking-widest mt-0.5">Strategic Operations</span>
+                                    </a>
+                                  </li>
+                                );
+                              })}
                             </ul>
                           ) : null}
                         </div>
@@ -255,10 +279,10 @@ export function Navbar() {
 
             {/* Mobile CTA */}
             <div className="px-6 pb-8 pt-4 mt-auto border-t border-white/5 flex flex-col gap-3">
-              <button className="w-full flex items-center justify-center gap-3 bg-brand-yellow hover:bg-brand-yellow/90 text-black px-6 py-4 rounded-xl transition-all font-black text-sm tracking-widest uppercase shadow-xl">
-                Book a Consult
+              <Link href="/contact" className="w-full flex items-center justify-center gap-3 bg-brand-yellow hover:bg-brand-yellow/90 text-black px-6 py-4 rounded-xl transition-all font-black text-sm tracking-widest uppercase shadow-xl">
+                Contact
                 <ArrowRight className="w-4 h-4" />
-              </button>
+              </Link>
               <a href="tel:+234800SVN0000" className="w-full flex items-center justify-center gap-3 border border-white/10 hover:border-white/30 text-white/60 hover:text-white px-6 py-3 rounded-xl transition-all font-bold text-xs tracking-widest uppercase">
                 <Phone className="w-4 h-4" />
                 Call Us

@@ -16,6 +16,7 @@ const hankenGrotesk = Hanken_Grotesk({
 });
 
 import { BackToTop } from "@/components/ui/back-to-top";
+import { WhatsAppButton } from "@/components/ui/whatsapp-button";
 import { client } from "@/sanity/lib/client";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 
@@ -27,9 +28,9 @@ export async function generateMetadata(): Promise<Metadata> {
     console.error("Failed to fetch site settings in generateMetadata:", error);
   }
   
-  const siteTitle = settings?.title || "SVN Aviation | A Branch of Schnell Vogel Nigeria Limited";
+  const siteTitle = settings?.title || "SVN Aviation | A Trading Name of Schnell Vogel Nigeria Limited";
   const siteDescription = settings?.description || "Premium Aviation Charter & Air Logistics. Delivering consistently for Oil and Gas Industries.";
-  const keywords = settings?.keywords || ["Aviation", "Nigeria", "Charter", "Helicopter", "Logistics", "Oil and Gas"];
+  const keywords = settings?.keywords || ["Private Jet Charter Nigeria", "Helicopter Charter Lagos", "Charter Flight Abuja", "Lagos to Abuja Private Jet", "Oil and Gas Aviation Nigeria", "Air Ambulance Nigeria", "SVN Aviation", "Schnell Vogel Nigeria", "Charter Flight Port Harcourt"];
   const ogImage = settings?.ogImage || "/og-image.jpg";
 
   return {
@@ -127,6 +128,7 @@ export default async function RootLayout({
       >
         {children}
         <BackToTop />
+        <WhatsAppButton />
       </body>
     </html>
   );

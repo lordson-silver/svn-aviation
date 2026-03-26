@@ -29,7 +29,7 @@ const VALUES = [
   {
     icon: <Globe className="w-7 h-7" />,
     title: 'Pan-African Reach',
-    desc: "Supported by the logistics network of our parent company Schnell Vogel Nigeria, we extend our reach across West Africa's most strategic corridors.",
+    desc: "Supported by the logistics network of Schnell Vogel Nigeria Limited, we extend our reach across West Africa's most strategic corridors.",
   },
   {
     icon: <Users className="w-7 h-7" />,
@@ -206,7 +206,7 @@ export default function AboutPage() {
                 variants={fadeUp}
                 className="text-white/60 text-base md:text-lg leading-relaxed"
               >
-                SVN Aviation is a specialized aviation services company and a subsidiary of Schnell Vogel Nigeria Limited — one of Nigeria's most trusted logistics and critical infrastructure groups. We provide on-demand executive charter, offshore crew transfer, aerial survey, and mission-critical aviation coordination across Nigeria's strategic corridors.
+                SVN Aviation is a specialized aviation services company and a trading name of Schnell Vogel Nigeria Limited — one of Nigeria's most trusted logistics and critical infrastructure groups. We provide on-demand executive charter, offshore crew transfer, aerial survey, and mission-critical aviation coordination across Nigeria's strategic corridors.
               </motion.p>
 
               <motion.p
