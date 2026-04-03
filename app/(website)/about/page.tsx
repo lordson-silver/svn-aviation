@@ -38,34 +38,34 @@ const VALUES = [
   },
 ];
 
-const LEADERSHIP = [
-  {
-    name: 'Adebayo Okafor',
-    title: 'Chief Executive Officer',
-    image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&h=400&fit=crop&q=80',
-  },
-  {
-    name: 'Ngozi Eze',
-    title: 'Director of Operations',
-    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=400&fit=crop&q=80',
-  },
-  {
-    name: 'Olumide Adeyemi',
-    title: 'Chief Safety Officer',
-    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=400&fit=crop&q=80',
-  },
-  {
-    name: 'Chisom Nwosu',
-    title: 'Head of Charter Services',
-    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=400&h=400&fit=crop&q=80',
-  },
-];
-
 const GALLERY_IMAGES = [
   'https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=800&q=80',
   'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=800&q=80',
   'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=800&q=80',
   'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=800&q=80',
+];
+
+const LEADERSHIP = [
+  {
+    name: 'Emeka Okafor',
+    title: 'Chief Executive Officer',
+    image: 'https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Adaeze Nwosu',
+    title: 'Chief Operations Officer',
+    image: 'https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Ibrahim Musa',
+    title: 'Director of Safety',
+    image: 'https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=600&q=80&auto=format&fit=crop',
+  },
+  {
+    name: 'Chidinma Eze',
+    title: 'Head of Client Relations',
+    image: 'https://images.unsplash.com/photo-1580489944761-15a19d654956?w=600&q=80&auto=format&fit=crop',
+  },
 ];
 
 export default function AboutPage() {
@@ -341,7 +341,7 @@ export default function AboutPage() {
             <Award className="w-12 h-12 text-brand-yellow flex-shrink-0" />
             <div>
               <p className="text-brand-yellow text-[10px] font-black tracking-[0.25em] uppercase mb-1">Regulatory Compliance</p>
-              <h3 className="text-2xl md:text-3xl font-black">NCAA & ICAO Certified Operator</h3>
+              <h3 className="text-2xl md:text-3xl font-black">NCAA Certified Operator</h3>
             </div>
           </div>
           <p className="text-white/50 text-sm leading-relaxed max-w-md text-center md:text-right">

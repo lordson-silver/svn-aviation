@@ -28,8 +28,8 @@ export async function generateMetadata(): Promise<Metadata> {
     console.error("Failed to fetch site settings in generateMetadata:", error);
   }
   
-  const siteTitle = settings?.title || "SVN Aviation | A Trading Name of Schnell Vogel Nigeria Limited";
-  const siteDescription = settings?.description || "Premium Aviation Charter & Air Logistics. Delivering consistently for Oil and Gas Industries.";
+  const siteTitle = settings?.title || "Private Jet & Helicopter Charter Services in Nigeria | SVN Aviation";
+  const siteDescription = settings?.description || "SVN Aviation provides private jet and helicopter charter services in Nigeria, offering reliable charter flight solutions across Lagos, Abuja, and nationwide. SVN Aviation is a trading name of Schnell Vogel Nigeria Limited.";
   const keywords = settings?.keywords || ["Private Jet Charter Nigeria", "Helicopter Charter Lagos", "Charter Flight Abuja", "Lagos to Abuja Private Jet", "Oil and Gas Aviation Nigeria", "Air Ambulance Nigeria", "SVN Aviation", "Schnell Vogel Nigeria", "Charter Flight Port Harcourt"];
   const ogImage = settings?.ogImage || "/og-image.jpg";
 

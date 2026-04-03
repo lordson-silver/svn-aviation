@@ -1,3 +1,4 @@
+import { Metadata } from 'next';
 import { Navbar } from '@/components/ui/navbar';
 import { Footer } from '@/components/sections/footer';
 import { client, isSanityConfigured } from '@/sanity/lib/client';
@@ -5,6 +6,11 @@ import { postsQuery } from '@/sanity/lib/queries';
 import { BlogCard } from '@/components/ui/blog-card';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
+
+export const metadata: Metadata = {
+  title: 'SVN Aviation Blog | Aviation Insights, Safety & Operations in Nigeria',
+  description: 'Read the latest insights on private jet charter, helicopter operations, and aviation safety in Nigeria and across West Africa from the SVN Aviation team.',
+};
 
 async function getPosts() {
   if (!isSanityConfigured) return [];

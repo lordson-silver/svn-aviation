@@ -29,26 +29,7 @@ export function Footer() {
             </p>
           </div>
 
-          <div className="lg:col-span-3 grid md:grid-cols-3 gap-12">
-            <div className="flex flex-col items-center md:items-start">
-              <h4 className="text-brand-yellow text-[10px] font-black tracking-[0.3em] uppercase mb-4 md:mb-6">Lagos Hub</h4>
-              <p className="text-white/70 text-sm leading-relaxed font-medium mb-1 md:mb-2">MMIA Aviation Plaza, Ikeja</p>
-              <p className="text-white/40 text-xs">Lagos State, Nigeria</p>
-              <p className="text-white/70 text-sm mt-2 md:mt-4 font-bold">+234 (0) 800 SVN LAGOS</p>
-            </div>
-            <div className="flex flex-col items-center md:items-start">
-              <h4 className="text-brand-yellow text-[10px] font-black tracking-[0.3em] uppercase mb-4 md:mb-6">Abuja Operations</h4>
-              <p className="text-white/70 text-sm leading-relaxed font-medium mb-1 md:mb-2">Nnamdi Azikiwe Int&apos;l Airport</p>
-              <p className="text-white/40 text-xs">FCT Abuja, Nigeria</p>
-              <p className="text-white/70 text-sm mt-2 md:mt-4 font-bold">+234 (0) 800 SVN ABJ</p>
-            </div>
-            <div className="flex flex-col items-center md:items-start">
-              <h4 className="text-brand-yellow text-[10px] font-black tracking-[0.3em] uppercase mb-4 md:mb-6">Port Harcourt</h4>
-              <p className="text-white/70 text-sm leading-relaxed font-medium mb-1 md:mb-2">Air Force Base, PH</p>
-              <p className="text-white/40 text-xs">Rivers State, Nigeria</p>
-              <p className="text-white/70 text-sm mt-2 md:mt-4 font-bold">+234 (0) 800 SVN PHC</p>
-            </div>
-          </div>
+          
         </div>
 
         {/* Middle Section: Floating Navigation Card */}

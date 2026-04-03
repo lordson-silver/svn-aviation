@@ -7,6 +7,7 @@ import { urlForImage } from '@/sanity/lib/image';
 import { ChevronRight, Calendar, User, ArrowLeft } from 'lucide-react';
 import Image from 'next/image';
 import Link from 'next/link';
+import { Metadata } from 'next';
 
 async function getPost(slug: string) {
   if (!isSanityConfigured) return null;
@@ -18,6 +19,30 @@ async function getPost(slug: string) {
     console.error('Error fetching post:', error);
     return null;
   }
+}
+
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  const { slug } = await params;
+  const post = await getPost(slug);
+  if (!post) return { title: 'Post Not Found' };
+
+  return {
+    title: `${post.title} | SVN Aviation Blog`,
+    description: post.excerpt || `Read our latest article: ${post.title}`,
+    openGraph: {
+      title: post.title,
+      description: post.excerpt,
+      images: post.mainImage ? [urlForImage(post.mainImage).url()] : [],
+      type: 'article',
+      publishedTime: post.publishedAt,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: post.title,
+      description: post.excerpt,
+      images: post.mainImage ? [urlForImage(post.mainImage).url()] : [],
+    },
+  };
 }
 
 export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
