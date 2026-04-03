@@ -33,7 +33,7 @@ export default async function Home() {
            <div className="max-w-[1400px] mx-auto px-8 md:px-12">
               <div className="text-center mb-8">
                 <span className="text-brand-yellow text-[10px] font-black tracking-[0.3em] uppercase">
-                  {homeData?.logoCloudTitle || "Strategic Partner Network"}
+                  {homeData?.logoCloudTitle || "Business Network"}
                 </span>
               </div>
               <LogoCloud />
