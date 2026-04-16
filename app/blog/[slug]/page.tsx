@@ -29,7 +29,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!post) return { title: 'Post Not Found' };
 
   return {
-    title: `${post.title} | SVN Aviation Blog`,
+    title: { absolute: `${post.title} | SVN Aviation Blog` },
     description: post.excerpt || `Read our latest article: ${post.title}`,
     openGraph: {
       title: post.title,
@@ -64,8 +64,34 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
     );
   }
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "image": post.mainImage ? [urlForImage(post.mainImage).url()] : [],
+    "datePublished": post.publishedAt,
+    "dateModified": post.publishedAt,
+    "author": [{
+      "@type": "Person",
+      "name": post.author?.name || "SVN Team"
+    }],
+    "publisher": {
+      "@type": "Organization",
+      "name": "SVN Aviation",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://svnaviation.com/logo.svg"
+      }
+    },
+    "description": post.excerpt || `Read our latest article: ${post.title}`
+  };
+
   return (
     <div className="relative min-h-screen w-full bg-black text-white flex flex-col font-sans overflow-x-hidden">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <Navbar />
 
       <main>
