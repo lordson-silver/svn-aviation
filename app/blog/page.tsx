@@ -12,6 +12,8 @@ export const metadata: Metadata = {
   description: 'Read the latest insights on private jet charter, helicopter operations, and aviation safety in Nigeria and across West Africa from the SVN Aviation team.',
 };
 
+export const revalidate = 60;
+
 async function getPosts() {
   if (!isSanityConfigured) return [];
   

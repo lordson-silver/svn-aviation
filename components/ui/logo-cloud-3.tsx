@@ -1,6 +1,5 @@
 import { InfiniteSlider } from "@/components/ui/infinite-slider";
 import { cn } from "@/lib/utils";
-import { Plane, Compass, MapPin, Navigation, Map, Globe, Wind, Ticket } from "lucide-react";
 
 type LogoCloudProps = React.ComponentProps<"div"> & {
   className?: string;

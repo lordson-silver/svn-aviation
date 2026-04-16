@@ -21,6 +21,8 @@ async function getPost(slug: string) {
   }
 }
 
+export const revalidate = 60;
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);

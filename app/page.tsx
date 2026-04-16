@@ -23,10 +23,10 @@ export default async function Home() {
       <h1 className="sr-only">
         {settings?.title || "SVN Aviation | Private Jet & Helicopter Charter Services in Nigeria"}
       </h1>
-
-      <main>
+      
         {/* Hero Slider (Client Component) */}
         <HeroSlider slides={homeData?.heroSlides} />
+      <main>
 
         {/* Logo Cloud Section - Integrated with parent brand */}
         <div className="relative z-20 bg-black py-16 border-y border-white/5">
