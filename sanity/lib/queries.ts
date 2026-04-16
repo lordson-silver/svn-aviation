@@ -7,7 +7,8 @@ export const postsQuery = groq`*[_type == "post"] | order(publishedAt desc) {
   publishedAt,
   excerpt,
   author->{name, image},
-  categories[]->{title}
+  categories[]->{title},
+  body
 }`
 
 export const postBySlugQuery = groq`*[_type == "post" && slug.current == $slug][0] {

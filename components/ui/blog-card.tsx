@@ -2,9 +2,11 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { urlForImage } from '@/sanity/lib/image';
 import { cn } from '@/lib/utils';
-import { Calendar, User, ArrowRight } from 'lucide-react';
+import { Calendar, User, ArrowRight, Clock } from 'lucide-react';
 
 export function BlogCard({ post }: { post: any }) {
+  const wordCount = JSON.stringify(post.body || []).split(/\s+/).length;
+  const readTime = post.body ? Math.max(1, Math.ceil(wordCount / 200)) : 5;
   return (
     <Link 
       href={`/blog/${post.slug.current}`}
@@ -36,7 +38,7 @@ export function BlogCard({ post }: { post: any }) {
       </div>
 
       <div className="p-8 flex flex-col flex-1 gap-4">
-        <div className="flex items-center gap-4 text-white/40 text-[10px] font-bold tracking-widest uppercase">
+        <div className="flex items-center flex-wrap gap-3 md:gap-4 text-white/40 text-[10px] font-bold tracking-widest uppercase">
           <div className="flex items-center gap-1.5">
             <Calendar className="w-3 h-3 text-brand-yellow/60" />
             {new Date(post.publishedAt).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
@@ -44,6 +46,10 @@ export function BlogCard({ post }: { post: any }) {
           <div className="flex items-center gap-1.5">
             <User className="w-3 h-3 text-brand-yellow/60" />
             {post.author?.name || 'SVN Team'}
+          </div>
+          <div className="flex items-center gap-1 px-2 py-0.5 bg-brand-yellow/10 border border-brand-yellow/20 text-brand-yellow rounded-full">
+            <Clock className="w-2.5 h-2.5 opacity-60" />
+            {readTime} MIN READ
           </div>
         </div>
 
