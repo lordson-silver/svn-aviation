@@ -9,7 +9,7 @@ export function BlogCard({ post }: { post: any }) {
   const readTime = post.body ? Math.max(1, Math.ceil(wordCount / 200)) : 5;
   return (
     <Link 
-      href={`/blog/${post.slug.current}`}
+      href={`/blog/${post.slug?.current || ''}`}
       className="group flex flex-col bg-brand-dark/40 backdrop-blur-xl border border-white/5 rounded-3xl overflow-hidden hover:border-brand-yellow/30 transition-all duration-500 shadow-2xl"
     >
       <div className="relative aspect-[16/10] overflow-hidden">

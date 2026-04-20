@@ -37,14 +37,14 @@ export function AviationInsights({ posts }: AviationInsightsProps) {
         <div className="grid lg:grid-cols-3 gap-12">
            {posts.map((post, i) => (
              <motion.div
-               key={post.slug.current}
+               key={post.slug?.current || `insight-${i}`}
                initial={{ opacity: 0, y: 20 }}
                whileInView={{ opacity: 1, y: 0 }}
                viewport={{ once: true }}
                transition={{ delay: i * 0.1 }}
                className="group cursor-pointer"
              >
-               <Link href={`/blog/${post.slug.current}`}>
+               <Link href={`/blog/${post.slug?.current || ''}`}>
                  <div className="aspect-video bg-white/5 border border-white/5 mb-8 overflow-hidden relative rounded-sm">
                     {post.mainImage && (
                       <Image 

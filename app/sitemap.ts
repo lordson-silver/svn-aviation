@@ -51,12 +51,14 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   if (isSanityConfigured) {
     try {
       const posts = await client.fetch(groq`*[_type == "post"] { "slug": slug.current, _updatedAt }`);
-      blogPages = posts.map((post: any) => ({
-        url: `${BASE_URL}/blog/${post.slug}`,
-        lastModified: post._updatedAt ? new Date(post._updatedAt) : new Date(),
-        changeFrequency: 'weekly' as const,
-        priority: 0.5,
-      }));
+      blogPages = posts
+        .filter((post: any) => post.slug)
+        .map((post: any) => ({
+          url: `${BASE_URL}/blog/${post.slug}`,
+          lastModified: post._updatedAt ? new Date(post._updatedAt) : new Date(),
+          changeFrequency: 'weekly' as const,
+          priority: 0.5,
+        }));
     } catch (error) {
       console.error('Error fetching posts for sitemap:', error);
     }

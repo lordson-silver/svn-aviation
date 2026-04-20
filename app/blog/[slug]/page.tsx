@@ -36,12 +36,12 @@ async function getRelatedPosts(currentPost: any) {
         groq`*[_type == "post" && slug.current != $slug && count((categories[]->title)[@ in $categories]) > 0] | order(publishedAt desc)[0...2] {
           title, slug, mainImage, publishedAt, excerpt, author->{name, image}, categories[]->{title}, body
         }`,
-        { slug: currentPost.slug.current, categories }
+        { slug: currentPost.slug?.current, categories }
       );
     }
     
     if (related.length < 2) {
-      const excludeSlugs = [currentPost.slug.current, ...related.map((r: any) => r.slug.current)];
+      const excludeSlugs = [currentPost.slug?.current, ...related.map((r: any) => r.slug?.current)].filter(Boolean);
       const fallback = await client.fetch(
         groq`*[_type == "post" && !(slug.current in $excludeSlugs)] | order(publishedAt desc)[0...2] {
           title, slug, mainImage, publishedAt, excerpt, author->{name, image}, categories[]->{title}, body
@@ -221,8 +221,8 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                 <h2 className="text-3xl md:text-5xl font-serif font-black uppercase">Related Insights</h2>
               </div>
               <div className="grid md:grid-cols-2 gap-8 max-w-[900px] mx-auto">
-                {relatedPosts.map((rp: any) => (
-                  <BlogCard key={rp.slug.current} post={rp} />
+                {relatedPosts.map((rp: any, i: number) => (
+                  <BlogCard key={rp.slug?.current || `related-${i}`} post={rp} />
                 ))}
               </div>
             </div>
