@@ -103,7 +103,7 @@ export default async function RootLayout({
     "logo": "https://svnaviation.com/logo.svg",
     "contactPoint": {
       "@type": "ContactPoint",
-      "telephone": settings?.phone || "+234-XXX-XXXX",
+      "telephone": settings?.phone || "+2348060740721",
       "contactType": "customer service",
       "areaServed": "NG",
       "availableLanguage": "en"
