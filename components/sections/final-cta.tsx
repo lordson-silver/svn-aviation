@@ -44,7 +44,7 @@ export function FinalCTA() {
                <div className="p-8 border border-white/5 bg-white/[0.01] rounded-2xl">
                   <Phone className="text-brand-yellow w-6 h-6 mb-4" />
                   <h4 className="text-[10px] tracking-[0.2em] font-black uppercase opacity-40 mb-2">Speak to Ops</h4>
-                  <p className="text-lg font-bold tracking-tight">+234 (0) 800 SVN OPS</p>
+                  <p className="text-lg font-bold tracking-tight">+234(0)8060740721</p>
                </div>
                <div className="p-8 border border-white/5 bg-white/[0.01] rounded-2xl">
                   <Mail className="text-brand-yellow w-6 h-6 mb-4" />
