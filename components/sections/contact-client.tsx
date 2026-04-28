@@ -117,7 +117,7 @@ export function ContactClient() {
       } else {
         const error = await response.json();
         console.error('Submission failed:', error);
-        alert('Operation Failed: Please try again or contact us directly at ops@svnaviation.ng');
+        alert('Operation Failed: Please try again or contact us directly at info@svnaviation.com');
       }
     } catch (err) {
       console.error('Network Error:', err);
