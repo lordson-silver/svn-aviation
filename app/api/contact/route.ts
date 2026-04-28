@@ -71,7 +71,7 @@ export async function POST(req: Request) {
       // Email to Company
       resend.emails.send({
         from: 'SVN Aviation <contact@contact.schnellvogel.com>',
-        to: ['lordsonochuko5@gmail.com'],
+        to: ['info@svnaviation.com'],
         subject: `NEW INQUIRY: ${name} (${pickup} > ${destination})`,
         html: internalEmailHtml,
       }),
