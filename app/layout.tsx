@@ -80,6 +80,9 @@ export async function generateMetadata(): Promise<Metadata> {
       index: true,
       follow: true,
     },
+    verification: {
+      google: "17wGzU2GcU8mgnCFAOs5S1J_T5ghO1Czc8RL12wZg2Y",
+    },
   };
 }
 
