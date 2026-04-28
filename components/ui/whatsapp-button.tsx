@@ -3,7 +3,7 @@
 import React from 'react';
 import { MessageCircle } from 'lucide-react';
 
-const WHATSAPP_NUMBER = '2347081744560'; // Update with actual SVN Aviation WhatsApp number
+const WHATSAPP_NUMBER = '2348060740721'; // Update with actual SVN Aviation WhatsApp number
 const DEFAULT_MESSAGE = 'Hello SVN Aviation, I\'d like to request a charter quote.';
 
 export function WhatsAppButton() {
