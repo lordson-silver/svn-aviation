@@ -17,7 +17,7 @@ import {
 } from '@/components/ui/sheet';
 
 const Logo = () => (
-  <div className="flex items-center gap-3">
+  <Link href="/" className="flex items-center gap-3 hover:opacity-90 transition-opacity">
     <div className="relative w-14 h-10 flex items-center justify-center">
       <Image src="/logo.svg" alt="SVN Aviation Logo" width={56} height={40} className="object-contain" priority />
     </div>
@@ -25,7 +25,7 @@ const Logo = () => (
       <span className="text-lg md:text-xl font-bold tracking-tight text-white font-serif uppercase">SVN Aviation</span>
       <span className="text-[8px] md:text-[9px] tracking-[0.2em] text-brand-yellow font-bold uppercase mt-0.5">Schnell Vogel Nigeria</span>
     </div>
-  </div>
+  </Link>
 );
 
 const navDropServices = [
