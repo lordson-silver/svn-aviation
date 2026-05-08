@@ -66,18 +66,19 @@ export async function POST(req: Request) {
       </html>
     `;
 
+
     // SEND BOTH EMAILS SIMULTANEOUSLY
     const [internalRes, clientRes] = await Promise.all([
       // Email to Company
       resend.emails.send({
-        from: 'SVN Aviation <contact@contact.svnaviation.com>',
+        from: 'SVN Aviation <contact@support.svnaviation.com>',
         to: ['info@svnaviation.com'],
         subject: `NEW INQUIRY: ${name} (${pickup} > ${destination})`,
         html: internalEmailHtml,
       }),
       // Auto-reply to Client
       resend.emails.send({
-        from: 'SVN Aviation <contact@contact.svnaviation.com>',
+        from: 'SVN Aviation <contact@support.svnaviation.com>',
         to: [email],
         subject: `Confirmation: Your Charter Request with SVN Aviation`,
         html: clientEmailHtml,
