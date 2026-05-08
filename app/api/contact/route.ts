@@ -70,14 +70,14 @@ export async function POST(req: Request) {
     const [internalRes, clientRes] = await Promise.all([
       // Email to Company
       resend.emails.send({
-        from: 'SVN Aviation <contact@contact.schnellvogel.com>',
+        from: 'SVN Aviation <contact@contact.svnaviation.com>',
         to: ['info@svnaviation.com'],
         subject: `NEW INQUIRY: ${name} (${pickup} > ${destination})`,
         html: internalEmailHtml,
       }),
       // Auto-reply to Client
       resend.emails.send({
-        from: 'SVN Aviation <contact@contact.schnellvogel.com>',
+        from: 'SVN Aviation <contact@contact.svnaviation.com>',
         to: [email],
         subject: `Confirmation: Your Charter Request with SVN Aviation`,
         html: clientEmailHtml,

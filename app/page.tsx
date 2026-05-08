@@ -1,6 +1,7 @@
 import React from "react";
 import { LogoCloud } from "@/components/ui/logo-cloud-3";
 import { ServicesGrid } from "@/components/sections/services-grid";
+import { WhyWorkWithUs } from "@/components/sections/why-work-with-us";
 import { IndustriesServed } from "@/components/sections/industries-served";
 import { OperationalCapability } from "@/components/sections/operational-capability";
 import { AviationInsights } from "@/components/sections/aviation-insights";
@@ -42,6 +43,7 @@ export default async function Home() {
 
         {/* Content Sections */}
         <ServicesGrid />
+        <WhyWorkWithUs />
         <OperationalCapability 
           title={homeData?.operationalTitle} 
           description={homeData?.operationalDescription}
