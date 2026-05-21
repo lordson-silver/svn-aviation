@@ -12,6 +12,8 @@ export function LogoCloud({ className, ...props }: LogoCloudProps) {
     { name: "Aero Contractors Company of Nigeria Limited" },
     { name: "Caverton Helicopters Limited" },
     { name: "Bristow Helicopters Nigeria Limited" },
+    { name: "Pioneer Airlines" },
+    { name: "Sky Jet Aviation" },
   ];
 
   return (
