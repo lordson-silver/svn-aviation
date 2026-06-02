@@ -2,15 +2,73 @@ import { Metadata } from 'next';
 import { Navbar } from '@/components/ui/navbar';
 import { Footer } from '@/components/sections/footer';
 import { client, isSanityConfigured } from '@/sanity/lib/client';
-import { postsQuery } from '@/sanity/lib/queries';
+import { postsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
+
 import { BlogCard } from '@/components/ui/blog-card';
 import { ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 
-export const metadata: Metadata = {
-  title: { absolute: 'SVN Aviation Blog | Aviation Insights, Safety & Operations in Nigeria' },
-  description: 'Read the latest insights on private jet charter, helicopter operations, and aviation safety in Nigeria and across West Africa from the SVN Aviation team.',
-};
+export async function generateMetadata(): Promise<Metadata> {
+  let settings = null;
+  try {
+    settings = await client.fetch(siteSettingsQuery);
+  } catch (error) {
+    console.error("Failed to fetch site settings in generateMetadata:", error);
+  }
+  
+  const siteTitle = settings?.title || "SVN Aviation Blog | Aviation Insights, Safety & Operations in Nigeria";
+  const siteDescription = settings?.description || "Read the latest insights on private jet charter, helicopter operations, and aviation safety in Nigeria and across West Africa from the SVN Aviation team.";
+  const keywords = settings?.keywords || ["Private Jet Charter Nigeria", "Helicopter Charter Lagos", "Charter Flight Abuja", "Lagos to Abuja Private Jet", "Oil and Gas Aviation Nigeria", "Air Ambulance Nigeria", "SVN Aviation", "Schnell Vogel Nigeria", "Charter Flight Port Harcourt"];
+  const ogImage = settings?.ogImage || "/og-image.jpg";
+
+  return {
+    title: { absolute: siteTitle },
+    description: siteDescription,
+    keywords: keywords,
+    authors: [{ name: "SVN Aviation" }],
+    creator: "SVN Aviation",
+    publisher: "Schnell Vogel Nigeria Limited",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    },
+    openGraph: {
+      title: siteTitle,
+      description: siteDescription,
+      url: "https://svnaviation.com",
+      siteName: siteTitle,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: siteTitle,
+        },
+      ],
+      locale: "en_US",
+      type: "website",
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: siteTitle,
+      description: siteDescription,
+      images: [ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+    },
+    verification: {
+      google: "17wGzU2GcU8mgnCFAOs5S1J_T5ghO1Czc8RL12wZg2Y",
+    },
+  };
+}
 
 export const revalidate = 60;
 
