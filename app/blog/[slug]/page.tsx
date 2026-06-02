@@ -2,7 +2,7 @@ import { Navbar } from '@/components/ui/navbar';
 import { Footer } from '@/components/sections/footer';
 import { client, isSanityConfigured } from '@/sanity/lib/client';
 import { groq } from 'next-sanity';
-import { postBySlugQuery, latestPostsQuery } from '@/sanity/lib/queries';
+import { postBySlugQuery, latestPostsQuery, siteSettingsQuery } from '@/sanity/lib/queries';
 import { PortableText } from '@/components/ui/portable-text';
 import { BlogCard } from '@/components/ui/blog-card';
 import { urlForImage } from '@/sanity/lib/image';
@@ -61,23 +61,83 @@ export const revalidate = 60;
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   const { slug } = await params;
   const post = await getPost(slug);
+
+  let settings = null;
+  if (isSanityConfigured) {
+    try {
+      settings = await client.fetch(siteSettingsQuery);
+    } catch (error) {
+      console.error("Failed to fetch site settings in generateMetadata:", error);
+    }
+  }
+
   if (!post) return { title: 'Post Not Found' };
 
+  const siteTitle = `${post.title} | SVN Aviation Blog`;
+  const siteDescription = post.excerpt || `Read our latest article: ${post.title} from SVN Aviation.`;
+  const ogImage = post.mainImage ? urlForImage(post.mainImage).url() : (settings?.ogImage || "/og-image.jpg");
+  const authorName = post.author?.name || "SVN Aviation";
+  
+  const postKeywords = post.categories ? post.categories.map((c: any) => c.title) : [];
+  const baseKeywords = settings?.keywords || ["Private Jet Charter Nigeria", "Helicopter Charter Lagos", "Aviation Insights", "SVN Aviation"];
+  const keywords = Array.from(new Set([...postKeywords, ...baseKeywords]));
+  
+  const url = `https://svnaviation.com/blog/${slug}`;
+
   return {
-    title: { absolute: `${post.title} | SVN Aviation Blog` },
-    description: post.excerpt || `Read our latest article: ${post.title}`,
+    title: { absolute: siteTitle },
+    description: siteDescription,
+    keywords: keywords,
+    authors: [{ name: authorName }],
+    creator: authorName,
+    publisher: "Schnell Vogel Nigeria Limited",
+    formatDetection: {
+      email: false,
+      address: false,
+      telephone: false,
+    },
+    icons: {
+      icon: "/favicon.ico",
+      shortcut: "/favicon.ico",
+      apple: "/apple-touch-icon.png",
+    },
     openGraph: {
       title: post.title,
-      description: post.excerpt,
-      images: post.mainImage ? [urlForImage(post.mainImage).url()] : [],
-      type: 'article',
+      description: siteDescription,
+      url: url,
+      siteName: "SVN Aviation",
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: post.title,
+        },
+      ],
+      locale: "en_US",
+      type: "article",
       publishedTime: post.publishedAt,
+      authors: [authorName],
     },
     twitter: {
-      card: 'summary_large_image',
+      card: "summary_large_image",
       title: post.title,
-      description: post.excerpt,
-      images: post.mainImage ? [urlForImage(post.mainImage).url()] : [],
+      description: siteDescription,
+      images: [ogImage],
+    },
+    robots: {
+      index: true,
+      follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
+    },
+    verification: {
+      google: "17wGzU2GcU8mgnCFAOs5S1J_T5ghO1Czc8RL12wZg2Y",
     },
   };
 }
