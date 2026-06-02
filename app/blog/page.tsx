@@ -41,8 +41,8 @@ export async function generateMetadata(): Promise<Metadata> {
     openGraph: {
       title: siteTitle,
       description: siteDescription,
-      url: "https://svnaviation.com",
-      siteName: siteTitle,
+      url: "https://svnaviation.com/blog",
+      siteName: "SVN Aviation",
       images: [
         {
           url: ogImage,
@@ -63,6 +63,13 @@ export async function generateMetadata(): Promise<Metadata> {
     robots: {
       index: true,
       follow: true,
+      googleBot: {
+        index: true,
+        follow: true,
+        'max-video-preview': -1,
+        'max-image-preview': 'large',
+        'max-snippet': -1,
+      },
     },
     verification: {
       google: "17wGzU2GcU8mgnCFAOs5S1J_T5ghO1Czc8RL12wZg2Y",
