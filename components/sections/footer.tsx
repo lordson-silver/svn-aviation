@@ -91,7 +91,7 @@ export function Footer() {
                    { name: 'Company', href: '/about' },
                    { name: 'Safety & Standards', href: '/about' },
                    { name: 'News & Press', href: '/blog' },
-                   { name: 'Careers', href: '/contact' }
+                   { name: 'Careers', href: '/careers' }
                 ].map((link) => (
                   <li key={link.name}>
                     <a href={link.href} className="text-white/40 hover:text-white transition-colors text-sm font-medium flex items-center gap-2 group">
