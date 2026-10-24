@@ -19,6 +19,7 @@ const hankenGrotesk = Hanken_Grotesk({
 
 import { BackToTop } from "@/components/ui/back-to-top";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
+import { ExitIntentPopup } from "@/components/ui/exit-intent-popup";
 import { client } from "@/sanity/lib/client";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 
@@ -30,8 +31,8 @@ export async function generateMetadata(): Promise<Metadata> {
     console.error("Failed to fetch site settings in generateMetadata:", error);
   }
   
-  const siteTitle = settings?.title || "Private Jet & Helicopter Charter Services in Nigeria | SVN Aviation";
-  const siteDescription = settings?.description || "SVN Aviation provides private jet and helicopter charter services in Nigeria, offering reliable charter flight solutions across Lagos, Abuja, and nationwide. SVN Aviation is a trading name of Schnell Vogel Nigeria Limited.";
+  const siteTitle = settings?.title || "Book Flight, Private Jet & Helicopter Charter In Nigeria | SVN Aviation";
+  const siteDescription = settings?.description || "Book flights, private jet and helicopter charters in Nigeria with SVN Aviation. Explore executive flights, corporate travel and specialised aviation solutions. Request a charter quote.";
   const keywords = settings?.keywords || ["Private Jet Charter Nigeria", "Helicopter Charter Lagos", "Charter Flight Abuja", "Lagos to Abuja Private Jet", "Oil and Gas Aviation Nigeria", "Air Ambulance Nigeria", "SVN Aviation", "Schnell Vogel Nigeria", "Charter Flight Port Harcourt"];
   const ogImage = settings?.ogImage || "/og-image.jpg";
 
@@ -121,7 +122,11 @@ export default async function RootLayout({
   };
 
   return (
-    <html lang="en" className={cn("font-sans", geist.variable)}>
+    <html 
+      lang="en" 
+      className={cn("font-sans", geist.variable)}
+      suppressHydrationWarning
+    >
       <head>
         {/* Google Tag Manager */}
         <Script id="google-tag-manager" strategy="afterInteractive">
@@ -171,6 +176,7 @@ export default async function RootLayout({
         {children}
         <BackToTop />
         <WhatsAppButton />
+        <ExitIntentPopup />
       </body>
     </html>
   );

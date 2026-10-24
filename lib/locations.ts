@@ -53,8 +53,8 @@ export const locationPages: LocationPage[] = [
     airport: 'Murtala Muhammed International Airport',
     airportCode: 'LOS',
     heroImage: 'https://images.unsplash.com/photo-1570710891163-6d3b5c47248b?w=2000&q=80&auto=format&fit=crop',
-    metaTitle: 'Charter Flight Services in Lagos | Private Jet & Helicopter Charter Lagos | SVN Aviation',
-    metaDescription: 'Private jet and helicopter charter services in Lagos, Nigeria. Fast, flexible, and efficient charter flights for corporate executives, oil & gas operators, and VIP travelers. SVN Aviation — a trading name of Schnell Vogel Nigeria Limited.',
+    metaTitle: 'Private Jet & Helicopter Charter in Lagos | SVN Aviation',
+    metaDescription: 'Book private jet or helicopter charter in Lagos with SVN Aviation. Explore executive flights, corporate travel and offshore aviation coordination. Request a quote.',
     intro: 'Lagos is Nigeria\'s commercial capital and one of the busiest aviation hubs in West Africa. Charter flight services in Lagos provide fast, flexible, and efficient travel solutions for corporate executives, government officials, oil and gas operators, and private individuals. SVN Aviation coordinates professional private jet and helicopter charter services in Lagos, ensuring seamless travel experiences tailored to client needs. With increasing demand for time-sensitive travel and operational efficiency, charter flights have become an essential solution for businesses and individuals who require speed, privacy, and flexibility. Whether for business meetings, offshore operations, or personal travel, charter services from Lagos offer unmatched convenience.',
     overview: 'Lagos serves as the primary gateway for domestic and international air travel in Nigeria. The city is home to key aviation infrastructure that supports private jet and helicopter operations, making it an ideal base for charter flight operations across Nigeria and beyond.',
     airportDetails: [
@@ -145,8 +145,8 @@ export const locationPages: LocationPage[] = [
     airport: 'Nnamdi Azikiwe International Airport',
     airportCode: 'ABV',
     heroImage: 'https://images.unsplash.com/photo-1540962351504-03099e0a754b?w=2000&q=80&auto=format&fit=crop',
-    metaTitle: 'Charter Flight Abuja | Private Jet Charter Services | SVN Aviation',
-    metaDescription: 'Private jet charter services in Abuja, Nigeria. Executive and government aviation from Nnamdi Azikiwe International Airport. Secure, fast, and discreet. Book now.',
+    metaTitle: 'Private Jet Charter in Abuja | Executive & Corporate Flights  | SVN Aviation',
+    metaDescription: 'Book private jet charter in Abuja with SVN Aviation for corporate travel, official engagements and VIP journeys. Request tailored flight options and a quote.',
     intro: 'Abuja, Nigeria\'s federal capital, is the second largest hub for private aviation in the country. SVN Aviation coordinates charter flight services from Abuja for government officials, diplomats, corporate executives, and international organizations. The city\'s importance as the seat of federal power — housing the presidency, national assembly, supreme court, and all federal ministries — generates continuous demand for secure, discreet, and time-efficient charter aviation services.',
     overview: 'Charter aviation in Abuja serves a distinctly different market compared to Lagos. The primary drivers are government travel, diplomatic missions, and regulatory-related corporate travel. Nnamdi Azikiwe International Airport has a dedicated presidential and VIP wing that handles high-profile charter movements, alongside a growing general aviation terminal for corporate charter operations. The seasonal nature of legislative sessions, budget presentations, and political events creates predictable peaks in charter demand. SVN Aviation\'s Abuja coordination team understands the unique protocol and security requirements of government and diplomatic charter operations, ensuring every mission is planned and executed to the highest standards.',
     availableServices: [
@@ -168,8 +168,8 @@ export const locationPages: LocationPage[] = [
     airport: 'Port Harcourt International Airport',
     airportCode: 'PHC',
     heroImage: 'https://images.unsplash.com/photo-1474302770737-173ee21bab63?w=2000&q=80&auto=format&fit=crop',
-    metaTitle: 'Charter Flight Port Harcourt | Helicopter & Jet Charter | SVN Aviation',
-    metaDescription: 'Helicopter and private jet charter services in Port Harcourt. Offshore crew transfers, oil & gas aviation, and executive flights. SVN Aviation Nigeria.',
+    metaTitle: 'Helicopter Charter in Port Harcourt | Offshore Flights | SVN Aviation',
+    metaDescription: 'Book helicopter charter in Port Harcourt with SVN Aviation for offshore crew transfers, oil and gas operations and specialised aviation missions. Request a quote.',
     intro: 'Port Harcourt is the epicenter of Nigeria\'s oil and gas industry and the most important helicopter charter hub in the country. SVN Aviation coordinates extensive charter operations from Port Harcourt, specializing in offshore crew transfers, platform-to-shore logistics, and executive jet charter for energy sector professionals. The city\'s proximity to major offshore production fields in the Niger Delta makes it the primary base for helicopter operations supporting the upstream petroleum industry.',
     overview: 'Port Harcourt International Airport and its surrounding helicopter bases handle more charter aviation movements than any other city in Nigeria when measured by flight frequency. The daily rhythm of offshore crew changes, platform inspections, and emergency deployments creates a constant flow of helicopter traffic between the city and offshore installations. For fixed-wing charter, Port Harcourt serves as a critical connection point between the Niger Delta and the rest of Nigeria, with high-frequency charter routes to Lagos and Abuja. SVN Aviation\'s Port Harcourt operations are built around the demanding requirements of the energy sector — strict safety compliance, weather-dependent scheduling, and 24/7 operational readiness.',
     availableServices: [
@@ -215,8 +215,8 @@ export const locationPages: LocationPage[] = [
     airport: 'Margaret Ekpo International Airport',
     airportCode: 'CBQ',
     heroImage: 'https://images.unsplash.com/photo-1556388158-158ea5ccacbd?w=2000&q=80&auto=format&fit=crop',
-    metaTitle: 'Charter Flight Calabar | Private Jet Charter Services | SVN Aviation',
-    metaDescription: 'Private charter flights to and from Calabar, Cross River State. Executive, corporate, and tourism aviation services. SVN Aviation Nigeria.',
+    metaTitle: 'Private Jet Charter in Calabar | Private Flights | SVN Aviation',
+    metaDescription: 'Book private jet charter to or from Calabar with SVN Aviation for business travel, corporate visits and special events. Request available flight options and a quote.',
     intro: 'Calabar, the capital of Cross River State, is emerging as an important destination for charter aviation in southeastern Nigeria. SVN Aviation coordinates private jet charter services to and from Margaret Ekpo International Airport, serving government officials, corporate executives, tourism operators, and international organizations active in the region. Calabar\'s unique position as Nigeria\'s tourism capital, a free trade zone host, and a border city with Cameroon creates diverse demand for charter aviation services.',
     overview: 'While not as high-volume as Lagos or Port Harcourt, Calabar\'s charter aviation market is growing steadily. The city hosts the Calabar Free Trade Zone, which attracts international manufacturing and trade companies requiring executive air access. Cross River State\'s ambitious tourism development programs — including the Calabar Carnival, one of Africa\'s largest street festivals — generate seasonal spikes in VIP charter demand. The state government\'s investment in infrastructure and the city\'s proximity to the Cameroon border also support international diplomatic and trade-related charter movements. Margaret Ekpo International Airport offers adequate facilities for charter operations with significantly less congestion than Lagos or Abuja, providing a more relaxed and efficient travel experience.',
     availableServices: [
