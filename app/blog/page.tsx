@@ -16,8 +16,8 @@ export async function generateMetadata(): Promise<Metadata> {
     console.error("Failed to fetch site settings in generateMetadata:", error);
   }
   
-  const siteTitle = settings?.title || "SVN Aviation Blog | Aviation Insights, Safety & Operations in Nigeria";
-  const siteDescription = settings?.description || "Read the latest insights on private jet charter, helicopter operations, and aviation safety in Nigeria and across West Africa from the SVN Aviation team.";
+  const siteTitle = settings?.title || "Private Aviation Insights & Charter Guides in Nigeria | SVN Aviation";
+  const siteDescription = settings?.description || "Explore private aviation in Nigeria with SVN Aviation. Read guides on private jet charter, helicopter hire, flight costs, booking processes, safety and offshore aviation.";
   const keywords = settings?.keywords || ["Private Jet Charter Nigeria", "Helicopter Charter Lagos", "Charter Flight Abuja", "Lagos to Abuja Private Jet", "Oil and Gas Aviation Nigeria", "Air Ambulance Nigeria", "SVN Aviation", "Schnell Vogel Nigeria", "Charter Flight Port Harcourt"];
   const ogImage = settings?.ogImage || "/og-image.jpg";
 
