@@ -19,7 +19,7 @@ const hankenGrotesk = Hanken_Grotesk({
 
 import { BackToTop } from "@/components/ui/back-to-top";
 import { WhatsAppButton } from "@/components/ui/whatsapp-button";
-import { ExitIntentPopup } from "@/components/ui/exit-intent-popup";
+// import { ExitIntentPopup } from "@/components/ui/exit-intent-popup";
 import { client } from "@/sanity/lib/client";
 import { siteSettingsQuery } from "@/sanity/lib/queries";
 
@@ -176,7 +176,7 @@ export default async function RootLayout({
         {children}
         <BackToTop />
         <WhatsAppButton />
-        <ExitIntentPopup />
+        {/* <ExitIntentPopup /> */}
       </body>
     </html>
   );
